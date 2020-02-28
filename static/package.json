@@ -1,0 +1,27 @@
+{
+  "name": "firefly-client",
+  "version": "1.0.0",
+  "description": "Client to the firefly polling application",
+  "main": "index.js",
+  "author": "webstrand",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev": "rollup -c rollup.config.js -w",
+    "build": "rollup -c rollup.config.js"
+  },
+  "devDependencies": {
+    "@rollup/plugin-alias": "^3.0.1",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-strip": "^1.2.1",
+    "@rollup/plugin-typescript": "^3.0.0",
+    "@types/socket.io-client": "^1.4.32",
+    "rollup": "^1.31.1",
+    "socket.io-client": "^2.3.0",
+    "surplus-mixin-data": "0.5.x",
+    "surplus": "0.5.x",
+    "tslib": "*",
+    "typescript": "^3.8.2"
+  }
+}

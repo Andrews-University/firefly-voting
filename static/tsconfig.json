@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+	  "target": "ES2017",
+	  "module": "ESNext",
+	  "lib": ["dom", "es2015", "es2016", "es2017", "es2015.iterable", "esnext.array"],
+	  "jsx": "preserve",
+	  "noEmit": true,
+	  "importHelpers": true,
+	  "strict": true,
+	  "alwaysStrict": true,
+	  "moduleResolution": "node",
+	  "baseUrl": "./",
+	  "paths": {
+		  "s-js": ["src/s-js"],
+	  },
+	  "allowSyntheticDefaultImports": true,
+	  "inlineSourceMap": true,
+	  "inlineSources": true,
+	  "experimentalDecorators": true,
+	  "emitDecoratorMetadata": false,
+	},
+	"include": ["src/**/*"]
+  }
