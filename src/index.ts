@@ -11,7 +11,7 @@ const { PORT = 8080 } = process.env;
 
 const router = express();
 const server = http.createServer(router);
-const io = socketio(server, { });
+const io = socketio(server, { path: "/firefly/socket.io" });
 
 // We don't care who's accessing us, it's wide-open.
 router.use(cors());

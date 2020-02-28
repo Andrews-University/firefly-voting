@@ -1,6 +1,6 @@
 import io from "socket.io-client";
 
-const socket = io({});
+const socket = io(location.origin, { path: "/firefly/socket.io" });
 
 const form = document.getElementsByTagName("form")[0]!;
 const message = form.elements[0] as HTMLInputElement;
