@@ -15,13 +15,7 @@ const io = socketio(server, { });
 // We don't care who's accessing us, it's wide-open.
 router.use(cors());
 
-router.get('/', function(req, res){
-	res.sendFile(__dirname + '/static/index.html');
-});
-
-router.get('/index.js', function(req, res){
-	res.sendFile(__dirname + '/static/index.js');
-});
+router.use("/firefly", express.static("static"));
 
 server.listen(PORT, () =>
   console.log(`Server is running http://localhost:${PORT}...`)
