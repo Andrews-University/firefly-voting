@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import path from 'path';
 import socketio from 'socket.io';
+import morgan from 'morgan';
 
 const __dirname = path.resolve();
 
@@ -14,6 +15,7 @@ const io = socketio(server, { });
 
 // We don't care who's accessing us, it's wide-open.
 router.use(cors());
+router.use(morgan('combined'));
 
 router.use("/firefly", express.static("static"));
 
