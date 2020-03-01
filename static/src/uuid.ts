@@ -2,7 +2,7 @@
 export const clientUUID = localStorage.getItem("clientUUID") || generate();
 localStorage.setItem("clientUUID", clientUUID);
 
-function generate(): string {
+export function generate(): string {
 	const bytes = crypto.getRandomValues(new Uint8Array(16));
 	return (
 		(0x100 + (bytes[0])).toString(16).substr(1) +

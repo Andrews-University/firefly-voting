@@ -72,19 +72,3 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="en")
 			h1.firefly-title Golden Cardinal Awards!
 			+firefly-category(0, "Best Category-0", "img/redleaves.jpg", "img/lanterns.jpg", "img/mountains.jpg", "img/forrest.jpg")
 			+firefly-category(1, "Best Category-1", "img/redleaves.jpg", "img/lanterns.jpg", "img/mountains.jpg", "img/forrest.jpg")
-
-		script(type="text/javascript" defer).
-			document.addEventListener("click", function (ev) {
-				let target = ev.target;
-				while(!(target instanceof HTMLElement) || !target.classList.contains("firefly-tile")) {
-					if(!target.parentNode) {
-						console.warn("could not find parent", ev.target);
-						return;
-					}
-
-					target = target.parentNode;
-				}
-				ev.preventDefault();
-
-				target.style.flexGrow = (+target.style.flexGrow || 0) + 1;
-			})
