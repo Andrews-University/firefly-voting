@@ -11,7 +11,7 @@ onEvent(socket, FireflyEvent.State, ({current_category, voting_is_open}) => {
 			element.classList.add("running");
 		}
 		else {
-			element.classList.remove("running");
+			element.classList.remove("running", "voted");
 
 			// When we *switch* categories, we reset the selected vote.
 			// The client sometimes reconnects, and will receive a new State event
@@ -60,6 +60,7 @@ document.addEventListener("click", (ev) => {
 		element.classList.remove("vote");
 	});
 
+	categoryTarget.classList.add("voted");
 	target.classList.add("vote");
 	console.log("Vote", { uuid: clientUUID, category: +category_id, candidate: +candidate_id });
 	emitEvent(socket, FireflyEvent.Vote, { uuid: clientUUID, category: +category_id, candidate: +candidate_id });

@@ -42,6 +42,7 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="en")
 			.firefly-layout {
 				margin-top: 30px;
 				display: flex;
+				justify-content: space-between;
 				flex-direction: row;
 				flex-wrap: wrap;
 			}
@@ -50,7 +51,10 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="en")
 			}
 			.firefly-tile.vote {
 				order: -1;
-				flex-basis: 100%
+				flex-basis: 100% !important;
+			}
+			.firefly-category.voted .firefly-tile {
+				flex-basis: 33.3333%
 			}
 			.firefly-tile-overlay {
 				display: none;
