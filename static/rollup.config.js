@@ -70,5 +70,15 @@ export default [
 			sourcemap: true,
 		},
 		plugins: plugins()
+	},
+	{
+		input: "src/monitor.tsx",
+		output: {
+			format: "iife",
+			file: "monitor.js",
+			name: "monitor",
+			sourcemap: true,
+		},
+		plugins: plugins()
 	}
 ];

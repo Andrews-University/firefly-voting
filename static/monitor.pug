@@ -1,0 +1,90 @@
+doctype html
+html(xmlns="http://www.w3.org/1999/xhtml" lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no")
+		title Vote for the Golden Cardinal
+		link(rel="shortcut icon" type="image/png" href="favicon.png")
+		script(type="application/javascript" src="monitor.js" defer)
+		link(rel="stylesheet" type="text/css" href="./css/bootstrap.css")
+		link(rel="stylesheet" type="text/css" href="./css/animate.css")
+		style(type="text/css").
+			.firefly-container {
+				padding: 40px 0 40px 0;
+			}
+			.firefly-title {
+				text-align: center;
+				color: #888;
+				font-family: Helvetica;
+				margin: 10px 0 20px 0;
+			}
+			.firefly-category {
+				display: none;
+			}
+			.firefly-category.running {
+				display: block;
+			}
+			.firefly-category-title {
+				text-align: center;
+				color: #888;
+				font-family: Helvetica;
+			}
+			.firefly-layout {
+				margin-top: 30px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.firefly-tile {
+				flex: 1;
+				transition: flex-grow 0.3s ease-out;
+				min-width: 0;
+				max-height: 70vh;
+				flex-grow: 1;
+				text-align: center;
+			}
+			.firefly-tile > img {
+				vertical-align: bottom;
+				max-height: 70vh;
+			}
+			.firefly-tile-counter {
+				white-space: nowrap;
+				background-color: #fff;
+			}
+
+	mixin firefly-tile(id, src)
+		.firefly-tile(id=id)
+			img.img-fluid.animated(src=src)
+			.firefly-tile-counter
+				h1
+					span.firefly-tile-counter-value 0
+					|  votes
+	mixin firefly-category(id, title, a, b, c, d)
+		section.firefly-category
+			h2.firefly-category-title #{title}
+			.firefly-layout
+				+firefly-tile(0, a)
+				+firefly-tile(1, b)
+				+firefly-tile(2, c)
+				+firefly-tile(3, d)
+	body
+		.firefly-container
+			h1.firefly-title Golden Cardinal Awards!
+			+firefly-category(0, "Best Category-0", "img/redleaves.jpg", "img/lanterns.jpg", "img/mountains.jpg", "img/forrest.jpg")
+			+firefly-category(1, "Best Category-1", "img/redleaves.jpg", "img/lanterns.jpg", "img/mountains.jpg", "img/forrest.jpg")
+
+		script(type="text/javascript" defer).
+			document.addEventListener("click", function (ev) {
+				let target = ev.target;
+				while(!(target instanceof HTMLElement) || !target.classList.contains("firefly-tile")) {
+					if(!target.parentNode) {
+						console.warn("could not find parent", ev.target);
+						return;
+					}
+
+					target = target.parentNode;
+				}
+				ev.preventDefault();
+
+				target.style.flexGrow = (+target.style.flexGrow || 0) + 1;
+			})

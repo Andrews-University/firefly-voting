@@ -1,9 +1,12 @@
 /index.html
+/monitor.html
 /index.js
 /index.js.map
 /chat.js
 /chat.js.map
 /admin.js
 /admin.js.map
+/monitor.js
+/monitor.js.map
 /node_modules
 /yarn-error.log

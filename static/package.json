@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"rollup -c rollup.config.js -w\" \"pug -w -P index.pug\"",
+    "dev": "concurrently \"rollup -c rollup.config.js -w\" \"pug -w -P index.pug monitor.pug\"",
     "build": "rollup -c rollup.config.js; pug -P index.pug"
   },
   "devDependencies": {
