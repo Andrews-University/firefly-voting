@@ -53,14 +53,14 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="en")
 			}
 
 	mixin firefly-tile(id, src)
-		.firefly-tile(id=id)
+		.firefly-tile(data-id=id)
 			img.img-fluid.animated(src=src)
 			.firefly-tile-counter
 				h1
 					span.firefly-tile-counter-value 0
 					|  votes
 	mixin firefly-category(id, title, a, b, c, d)
-		section.firefly-category
+		section.firefly-category(data-id=id)
 			h2.firefly-category-title #{title}
 			.firefly-layout
 				+firefly-tile(0, a)
