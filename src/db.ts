@@ -100,3 +100,27 @@ WHERE category = ?
 export function resetVotes(category: number): void {
 	_resetVotes.run(category);
 }
+
+const _tallyVotes = db.prepare(`
+SELECT candidate, COUNT(uuid) AS tally
+FROM votes
+WHERE category = ?
+GROUP BY candidate
+`);
+export function tallyVotes(category: number): number[] {
+	const candidates: { candidate: number, tally: number }[] = _tallyVotes.all(category);
+
+	let max = 0;
+	const map: Record<number, number> = {};
+	for(const row of candidates) {
+		map[row.candidate] = row.tally;
+		if(row.candidate > max) max = +row.candidate;
+	}
+
+	const votes = new Array<number>(max);
+	for(let i = 0; i <= max; i++) {
+		votes[i] = +map[i] || 0;
+	}
+
+	return votes;
+}
