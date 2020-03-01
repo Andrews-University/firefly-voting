@@ -68,87 +68,30 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="en")
 				color: #888;
 				font-family: Helvetica;
 			}
+	mixin firefly-tile(id, src, anim)
+		.firefly-tile(data-id=id)
+			a.firefly-tile-liner(href="#")
+				img.img-fluid.animated(class=anim src=src)
+			.firefly-tile-overlay
+				h3.firefly-tile-overlay-title Thank You for Voting!
+				p.firefly-tile-overlay-body
+					| Please wait while we count your votes.
+					br
+					| You may change your vote at any time by selecting a different candidate.
+	mixin firefly-category(id, title, a, b, c, d)
+		section.firefly-category(data-id="0")
+			h2.firefly-category-title Best Category-1
+			.firefly-layout
+				+firefly-tile(0, a, "fadeInLeft")
+				+firefly-tile(1, b, "fadeInDown")
+				+firefly-tile(2, c, "fadeInUp")
+				+firefly-tile(3, d, "fadeInRight")
 	body
 		.container.firefly-container
 			h1.firefly-title Golden Cardinal Awards!
-			section.firefly-category(data-id="0")
-				h2.firefly-category-title Best Category-1
-				.firefly-layout
-					.firefly-tile(data-id="0")
-						a.firefly-tile-liner(href="#")
-							img.img-fluid.animated.fadeInLeft(src="img/redleaves.jpg")
-						.firefly-tile-overlay
-							h3.firefly-tile-overlay-title Thank You for Voting!
-							p.firefly-tile-overlay-body
-								| Please wait while we count your votes.
-								br
-								| You may change your vote at any time by selecting a different candidate.
-					.firefly-tile(data-id="1")
-						a.firefly-tile-liner(href="#")
-							img.img-fluid.animated.fadeInDown(src="img/lanterns.jpg")
-						.firefly-tile-overlay
-							h3.firefly-tile-overlay-title Thank You for Voting!
-							p.firefly-tile-overlay-body
-								| Please wait while we count your votes.
-								br
-								| You may change your vote at any time by selecting a different candidate.
-					.firefly-tile(data-id="2")
-						a.firefly-tile-liner(href="#")
-							img.img-fluid.animated.fadeInUp(src="img/mountains.jpg")
-						.firefly-tile-overlay
-							h3.firefly-tile-overlay-title Thank You for Voting!
-							p.firefly-tile-overlay-body
-								| Please wait while we count your votes.
-								br
-								| You may change your vote at any time by selecting a different candidate.
-					.firefly-tile(data-id="3")
-						a.firefly-tile-liner(href="#")
-							img.img-fluid.animated.fadeInRight(src="img/forrest.jpg")
-						.firefly-tile-overlay
-							h3.firefly-tile-overlay-title Thank You for Voting!
-							p.firefly-tile-overlay-body
-								| Please wait while we count your votes.
-								br
-								| You may change your vote at any time by selecting a different candidate.
-			section.firefly-category(data-id="1")
-				h2.firefly-category-title Best Category-2
-				.firefly-layout
-					.firefly-tile(data-id="0")
-						a.firefly-tile-liner(href="#")
-							img.img-fluid.animated.fadeInLeft(src="img/redleaves.jpg")
-						.firefly-tile-overlay
-							h3.firefly-tile-overlay-title Thank You for Voting!
-							p.firefly-tile-overlay-body
-								| Please wait while we count your votes.
-								br
-								| You may change your vote at any time by selecting a different candidate.
-					.firefly-tile(data-id="1")
-						a.firefly-tile-liner(href="#")
-							img.img-fluid.animated.fadeInDown(src="img/lanterns.jpg")
-						.firefly-tile-overlay
-							h3.firefly-tile-overlay-title Thank You for Voting!
-							p.firefly-tile-overlay-body
-								| Please wait while we count your votes.
-								br
-								| You may change your vote at any time by selecting a different candidate.
-					.firefly-tile(data-id="2")
-						a.firefly-tile-liner(href="#")
-							img.img-fluid.animated.fadeInUp(src="img/mountains.jpg")
-						.firefly-tile-overlay
-							h3.firefly-tile-overlay-title Thank You for Voting!
-							p.firefly-tile-overlay-body
-								| Please wait while we count your votes.
-								br
-								| You may change your vote at any time by selecting a different candidate.
-					.firefly-tile(data-id="3")
-						a.firefly-tile-liner(href="#")
-							img.img-fluid.animated.fadeInRight(src="img/forrest.jpg")
-						.firefly-tile-overlay
-							h3.firefly-tile-overlay-title Thank You for Voting!
-							p.firefly-tile-overlay-body
-								| Please wait while we count your votes.
-								br
-								| You may change your vote at any time by selecting a different candidate.
+			+firefly-category(0, "Best Category-0", "img/redleaves.jpg", "img/lanterns.jpg", "img/mountains.jpg", "img/forrest.jpg")
+			+firefly-category(1, "Best Category-1", "img/redleaves.jpg", "img/lanterns.jpg", "img/mountains.jpg", "img/forrest.jpg")
+
 			section.firefly-placeholder
 				h4.firefly-placeholder-title Unavailable
 				p.firefly-placeholder-body
