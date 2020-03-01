@@ -2,6 +2,11 @@ import { socket } from "./socket";
 import { FireflyEvent, onEvent, emitEvent } from "./events";
 import { generate } from './uuid';
 
+if(/fullscreen/.test(location.search)) {
+    console.log("going fullscreen");
+    document.body.requestFullscreen();
+}
+
 socket.on("connect", () => {
 	emitEvent(socket, FireflyEvent.Signon, "stats");
 });
