@@ -1,0 +1,156 @@
+doctype xml
+doctype html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN"
+html(xmlns="http://www.w3.org/1999/xhtml" lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no")
+		title Vote for the Golden Cardinal
+		link(rel="shortcut icon" type="image/png" href="favicon.png")
+		script(type="application/javascript" src="index.js" defer="")
+		link(rel="stylesheet" type="text/css" href="./css/bootstrap.css")
+		link(rel="stylesheet" type="text/css" href="./css/animate.css")
+		style(type="text/css").
+			.firefly-container {
+				padding: 40px 0 40px 0;
+			}
+			.firefly-title {
+				text-align: center;
+				color: #888;
+				font-family: Helvetica;
+				margin: 10px 0 20px 0;
+			}
+			.firefly-category {
+				display: none;
+			}
+			.firefly-category.running {
+				display: block;
+			}
+			.firefly-category-title {
+				text-align: center;
+				color: #888;
+				font-family: Helvetica;
+			}
+			.firefly-tile-overlay-title {
+				text-align: center;
+				color: #888;
+				font-family: Helvetica;
+			}
+			.firefly-tile-overlay-body {
+				text-align: center;
+				color: #888;
+				font-family: Helvetica;
+			}
+			.firefly-layout {
+				margin-top: 30px;
+				display: grid;
+				grid-template-columns: auto auto;
+				row-gap: 1em;
+				column-gap: 1em;
+			}
+			.firefly-tile.vote {
+				grid-column: 1/3;
+			}
+			.firefly-tile-overlay {
+				display: none;
+			}
+			.firefly-tile.vote > .firefly-tile-overlay {
+				display: block;
+			}
+			.firefly-category.running ~ .firefly-placeholder {
+				display: none;
+			}
+			.firefly-placeholder-title {
+				text-align: center;
+				color: #888;
+				font-family: Helvetica;
+			}
+			.firefly-placeholder-body {
+				text-align: center;
+				color: #888;
+				font-family: Helvetica;
+			}
+	body
+		.container.firefly-container
+			h1.firefly-title Golden Cardinal Awards!
+			section.firefly-category(data-id="0")
+				h2.firefly-category-title Best Category-1
+				.firefly-layout
+					.firefly-tile(data-id="0")
+						a.firefly-tile-liner(href="#")
+							img.img-fluid.animated.fadeInLeft(src="img/redleaves.jpg")
+						.firefly-tile-overlay
+							h3.firefly-tile-overlay-title Thank You for Voting!
+							p.firefly-tile-overlay-body
+								| Please wait while we count your votes.
+								br
+								| You may change your vote at any time by selecting a different candidate.
+					.firefly-tile(data-id="1")
+						a.firefly-tile-liner(href="#")
+							img.img-fluid.animated.fadeInDown(src="img/lanterns.jpg")
+						.firefly-tile-overlay
+							h3.firefly-tile-overlay-title Thank You for Voting!
+							p.firefly-tile-overlay-body
+								| Please wait while we count your votes.
+								br
+								| You may change your vote at any time by selecting a different candidate.
+					.firefly-tile(data-id="2")
+						a.firefly-tile-liner(href="#")
+							img.img-fluid.animated.fadeInUp(src="img/mountains.jpg")
+						.firefly-tile-overlay
+							h3.firefly-tile-overlay-title Thank You for Voting!
+							p.firefly-tile-overlay-body
+								| Please wait while we count your votes.
+								br
+								| You may change your vote at any time by selecting a different candidate.
+					.firefly-tile(data-id="3")
+						a.firefly-tile-liner(href="#")
+							img.img-fluid.animated.fadeInRight(src="img/forrest.jpg")
+						.firefly-tile-overlay
+							h3.firefly-tile-overlay-title Thank You for Voting!
+							p.firefly-tile-overlay-body
+								| Please wait while we count your votes.
+								br
+								| You may change your vote at any time by selecting a different candidate.
+			section.firefly-category(data-id="1")
+				h2.firefly-category-title Best Category-2
+				.firefly-layout
+					.firefly-tile(data-id="0")
+						a.firefly-tile-liner(href="#")
+							img.img-fluid.animated.fadeInLeft(src="img/redleaves.jpg")
+						.firefly-tile-overlay
+							h3.firefly-tile-overlay-title Thank You for Voting!
+							p.firefly-tile-overlay-body
+								| Please wait while we count your votes.
+								br
+								| You may change your vote at any time by selecting a different candidate.
+					.firefly-tile(data-id="1")
+						a.firefly-tile-liner(href="#")
+							img.img-fluid.animated.fadeInDown(src="img/lanterns.jpg")
+						.firefly-tile-overlay
+							h3.firefly-tile-overlay-title Thank You for Voting!
+							p.firefly-tile-overlay-body
+								| Please wait while we count your votes.
+								br
+								| You may change your vote at any time by selecting a different candidate.
+					.firefly-tile(data-id="2")
+						a.firefly-tile-liner(href="#")
+							img.img-fluid.animated.fadeInUp(src="img/mountains.jpg")
+						.firefly-tile-overlay
+							h3.firefly-tile-overlay-title Thank You for Voting!
+							p.firefly-tile-overlay-body
+								| Please wait while we count your votes.
+								br
+								| You may change your vote at any time by selecting a different candidate.
+					.firefly-tile(data-id="3")
+						a.firefly-tile-liner(href="#")
+							img.img-fluid.animated.fadeInRight(src="img/forrest.jpg")
+						.firefly-tile-overlay
+							h3.firefly-tile-overlay-title Thank You for Voting!
+							p.firefly-tile-overlay-body
+								| Please wait while we count your votes.
+								br
+								| You may change your vote at any time by selecting a different candidate.
+			section.firefly-placeholder
+				h4.firefly-placeholder-title Unavailable
+				p.firefly-placeholder-body
+					| Please pay attention to the presentation, you will be able to vote for your candidate of choice soon.

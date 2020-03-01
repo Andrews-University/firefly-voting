@@ -7,8 +7,8 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "dev": "rollup -c rollup.config.js -w",
-    "build": "rollup -c rollup.config.js"
+    "dev": "concurrently \"rollup -c rollup.config.js -w\" \"pug -w -P index.pug\"",
+    "build": "rollup -c rollup.config.js; pug -P index.pug"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^3.0.1",
@@ -17,6 +17,9 @@
     "@rollup/plugin-strip": "^1.2.1",
     "@rollup/plugin-typescript": "^3.0.0",
     "@types/socket.io-client": "^1.4.32",
+    "concurrently": "^5.1.0",
+    "pug": "^2.0.4",
+    "pug-cli": "^1.0.0-alpha6",
     "rollup": "^1.31.1",
     "s-js": "^0.4.9",
     "socket.io-client": "^2.3.0",
