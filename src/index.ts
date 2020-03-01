@@ -1,10 +1,10 @@
 import http from "http";
 import express from "express";
 import cors from "cors";
-import path from 'path';
-import socketio from 'socket.io';
-import morgan from 'morgan';
-import { getState, setState, recordVote, resetVotes } from './db';
+import path from "path";
+import socketio from "socket.io";
+import morgan from "morgan";
+import { getState, setState, recordVote, resetVotes, tallyVotes } from "./db";
 import { SecretRoom, FireflyEvent, emitEvent, onEvent } from "./events";
 
 const __dirname = path.resolve();
@@ -30,7 +30,10 @@ const monitors = () => io.to("monitor");
 const admins = () => io.to(SecretRoom);
 
 function joinMonitor(socket: socketio.Socket) {
+	socket.join("monitor");
 	emitEvent(admins(), FireflyEvent.Info, "monitor connected");
+	const votes = tallyVotes(state.current_category);
+	emitEvent(socket, FireflyEvent.Stats, { category: state.current_category, votes });
 
 }
 
@@ -54,19 +57,24 @@ function joinAdmin(socket: socketio.Socket) {
 		}
 
 		emitEvent(io, FireflyEvent.State, state);
+		const votes = tallyVotes(state.current_category);
+		emitEvent(monitors(), FireflyEvent.Stats, { category: state.current_category, votes });
 	});
 }
 
 
-io.on('connection', function(socket) {
-	socket.on('reconnect', () => emitEvent(socket, FireflyEvent.State, state));
-	socket.on('chat_message', function (msg) { io.emit('chat_message', msg) }); // Preserve functionality of chat.html
-	socket.on('disconnect', () => emitEvent(admins(), FireflyEvent.Info, "user disconnected"));
+io.on("connection", function(socket) {
+	socket.on("reconnect", () => emitEvent(socket, FireflyEvent.State, state));
+	socket.on("chat_message", function (msg) { io.emit("chat_message", msg) }); // Preserve functionality of chat.html
+	socket.on("disconnect", () => emitEvent(admins(), FireflyEvent.Info, "user disconnected"));
 	onEvent(socket, FireflyEvent.Signon, (kind) => kind === "helo" ? joinAdmin(socket) : kind === "stats" ? joinMonitor(socket) : null);
 	onEvent(socket, FireflyEvent.Vote, function handleVote({uuid, category, candidate}) {
 		if(category !== state.current_category || !state.voting_is_open) return;
 		recordVote(uuid, category, candidate);
 		emitEvent(admins(), FireflyEvent.Vote, {uuid, category, candidate});
+
+		const votes = tallyVotes(category);
+		emitEvent(monitors(), FireflyEvent.Stats, { category, votes });
 	});
 
 	emitEvent(socket, FireflyEvent.State, state);
