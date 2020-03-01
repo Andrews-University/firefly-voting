@@ -71,12 +71,6 @@ document.addEventListener("click", (ev) => {
 		return;
 	}
 
-	Array.from(document.getElementsByClassName("firefly-tile")).forEach((element) => {
-		element.classList.remove("vote");
-	});
-
-	target.classList.add("vote");
-	console.log("Vote", { uuid: generate(), category: +category_id, candidate: +candidate_id });
 	emitEvent(socket, FireflyEvent.Vote, { uuid: generate(), category: +category_id, candidate: +candidate_id });
 });
 
