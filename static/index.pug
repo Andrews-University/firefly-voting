@@ -79,8 +79,8 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="en")
 					br
 					| You may change your vote at any time by selecting a different candidate.
 	mixin firefly-category(id, title, a, b, c, d)
-		section.firefly-category(data-id="0")
-			h2.firefly-category-title Best Category-1
+		section.firefly-category(data-id=id)
+			h2.firefly-category-title #{title}
 			.firefly-layout
 				+firefly-tile(0, a, "fadeInLeft")
 				+firefly-tile(1, b, "fadeInDown")
