@@ -11,9 +11,12 @@
     "node": "^13.9.0"
   },
   "scripts": {
-    "start": "node --es-module-specifier-resolution=node dist/index.js -i static",
+    "start": "node --es-module-specifier-resolution=node dist/index.js",
     "dev": "tsc && concurrently \"tsc -w\" \"nodemon --es-module-specifier-resolution=node dist/index.js\"",
     "build": "tsc"
+  },
+  "nodemonConfig": {
+    "ignore": ["static/**/*"]
   },
   "dependencies": {
     "@types/better-sqlite3": "^5.4.0",
