@@ -88,12 +88,17 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="en")
 				+firefly-tile(0, a, "fadeInLeft")
 				+firefly-tile(1, b, "fadeInDown")
 				+firefly-tile(2, c, "fadeInUp")
-				+firefly-tile(3, d, "fadeInRight")
+				if d
+					+firefly-tile(3, d, "fadeInRight")
 	body
 		.container.firefly-container
 			h1.firefly-title Golden Cardinal Awards!
-			+firefly-category(0, "Best Category-0", "img/redleaves.jpg", "img/lanterns.jpg", "img/mountains.jpg", "img/forrest.jpg")
-			+firefly-category(1, "Best Category-1", "img/redleaves.jpg", "img/lanterns.jpg", "img/mountains.jpg", "img/forrest.jpg")
+			+firefly-category(0, "Best Regalia",                     "img/regailia/sonia-small.svg", "img/regailia/vern_byrd-small.svg", "img/regailia/faculty-small.svg", "img/regailia/ryan_hayes-small.svg")
+			+firefly-category(1, "Best Office Fit Break",            "img/break/arboretum.svg", "img/break/crayon-box.svg", "img/break/gia-ceis.svg", "img/break/transportation.svg")
+			+firefly-category(2, "Best Employee on a Skateboard",    "img/skateboard/melissa-bolle.svg", "img/skateboard/don.svg", "img/skateboard/melissa-poua.svg", "img/skateboard/jason.svg")
+			+firefly-category(3, "Best Southern Accent",             "img/accent/fares.svg", "img/accent/alisa.svg", "img/accent/luxton.svg", "img/accent/stefanie.svg")
+			+firefly-category(4, "Best Sam’s Chicken Dipping Sauce", "img/sauce/janet.svg", "img/sauce/diane.svg", "img/sauce/pablo.svg", "img/sauce/carlisle.svg")
+			+firefly-category(5, "Best World Climate Changer",       "img/climate/valencia-finance.svg", "img/climate/doug-graphic-design.svg", "img/climate/angela-biology.svg", "")
 
 			section.firefly-placeholder
 				h4.firefly-placeholder-title Unavailable

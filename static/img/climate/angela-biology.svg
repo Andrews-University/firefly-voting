@@ -1,0 +1,662 @@
+<?xml version="1.0" standalone="yes"?>
+<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg" version="1.1" >
+	<defs>
+	<linearGradient id="gradient-0" x1="100.000%" y1="32.067%" x2="0.000%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#493b21"/>
+				
+					<stop offset="50.000%" stop-color="#232733"/>
+				
+					<stop offset="100.000%" stop-color="#413b2d"/>
+				</linearGradient>
+	<linearGradient id="gradient-1" x1="100.000%" y1="100.000%" x2="45.000%" y2="0.000%">
+					<stop offset="0.000%" stop-color="#493b21"/>
+				
+					<stop offset="50.000%" stop-color="#b48952"/>
+				
+					<stop offset="100.000%" stop-color="#1b1811"/>
+				</linearGradient>
+	<linearGradient id="gradient-2" x1="0.794%" y1="100.000%" x2="50.000%" y2="0.000%">
+					<stop offset="0.000%" stop-color="#493b21"/>
+				
+					<stop offset="50.000%" stop-color="#4f3423"/>
+				
+					<stop offset="100.000%" stop-color="#66666e"/>
+				</linearGradient>
+	<linearGradient id="gradient-3" x1="0.000%" y1="100.000%" x2="53.953%" y2="13.233%">
+					<stop offset="0.000%" stop-color="#545047"/>
+				
+					<stop offset="50.000%" stop-color="#43422e"/>
+				
+					<stop offset="100.000%" stop-color="#735d45"/>
+				</linearGradient>
+	<linearGradient id="gradient-4" x1="93.281%" y1="71.243%" x2="50.000%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#6f838e"/>
+				
+					<stop offset="50.000%" stop-color="#100d08"/>
+				
+					<stop offset="100.000%" stop-color="#a28050"/>
+				</linearGradient>
+	<linearGradient id="gradient-5" x1="0.000%" y1="45.723%" x2="75.000%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#545047"/>
+				
+					<stop offset="50.000%" stop-color="#927f55"/>
+				
+					<stop offset="100.000%" stop-color="#494e48"/>
+				</linearGradient>
+	<linearGradient id="gradient-6" x1="100.000%" y1="47.656%" x2="3.160%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#2d241f"/>
+				
+					<stop offset="50.000%" stop-color="#ae8f63"/>
+				
+					<stop offset="100.000%" stop-color="#474433"/>
+				</linearGradient>
+	<linearGradient id="gradient-7" x1="100.000%" y1="0.000%" x2="46.600%" y2="82.037%">
+					<stop offset="0.000%" stop-color="#0c0a0d"/>
+				
+					<stop offset="50.000%" stop-color="#b9a990"/>
+				
+					<stop offset="100.000%" stop-color="#735d45"/>
+				</linearGradient>
+	<linearGradient id="gradient-8" x1="100.000%" y1="27.729%" x2="33.146%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#2e2a2b"/>
+				
+					<stop offset="50.000%" stop-color="#b69898"/>
+				
+					<stop offset="100.000%" stop-color="#494e48"/>
+				</linearGradient>
+	<linearGradient id="gradient-9" x1="95.506%" y1="34.043%" x2="50.000%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#504148"/>
+				
+					<stop offset="50.000%" stop-color="#e5d3ed"/>
+				
+					<stop offset="100.000%" stop-color="#b0765e"/>
+				</linearGradient>
+	<linearGradient id="gradient-10" x1="79.118%" y1="0.000%" x2="50.000%" y2="93.133%">
+					<stop offset="0.000%" stop-color="#2d241f"/>
+				
+					<stop offset="50.000%" stop-color="#27201a"/>
+				
+					<stop offset="100.000%" stop-color="#b16a4a"/>
+				</linearGradient>
+	<linearGradient id="gradient-11" x1="0.000%" y1="0.000%" x2="79.508%" y2="67.486%">
+					<stop offset="0.000%" stop-color="#585350"/>
+				
+					<stop offset="50.000%" stop-color="#a78b73"/>
+				
+					<stop offset="100.000%" stop-color="#1b1515"/>
+				</linearGradient>
+	<linearGradient id="gradient-12" x1="0.000%" y1="0.000%" x2="65.570%" y2="74.034%">
+					<stop offset="0.000%" stop-color="#2d241f"/>
+				
+					<stop offset="50.000%" stop-color="#1b1310"/>
+				
+					<stop offset="100.000%" stop-color="#312d2e"/>
+				</linearGradient>
+	<linearGradient id="gradient-13" x1="0.000%" y1="100.000%" x2="51.710%" y2="27.315%">
+					<stop offset="0.000%" stop-color="#585350"/>
+				
+					<stop offset="50.000%" stop-color="#745b3d"/>
+				
+					<stop offset="100.000%" stop-color="#908776"/>
+				</linearGradient>
+	<linearGradient id="gradient-14" x1="0.000%" y1="79.288%" x2="92.958%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#585350"/>
+				
+					<stop offset="50.000%" stop-color="#443f39"/>
+				
+					<stop offset="100.000%" stop-color="#151318"/>
+				</linearGradient>
+	<linearGradient id="gradient-15" x1="0.000%" y1="51.515%" x2="88.377%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#2d241f"/>
+				
+					<stop offset="50.000%" stop-color="#18110b"/>
+				
+					<stop offset="100.000%" stop-color="#262427"/>
+				</linearGradient>
+	<linearGradient id="gradient-16" x1="0.000%" y1="100.000%" x2="79.710%" y2="47.317%">
+					<stop offset="0.000%" stop-color="#2b2936"/>
+				
+					<stop offset="50.000%" stop-color="#4c4a55"/>
+				
+					<stop offset="100.000%" stop-color="#313131"/>
+				</linearGradient>
+	<linearGradient id="gradient-17" x1="100.000%" y1="11.255%" x2="28.191%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#272528"/>
+				
+					<stop offset="50.000%" stop-color="#1b191a"/>
+				
+					<stop offset="100.000%" stop-color="#262427"/>
+				</linearGradient>
+	<linearGradient id="gradient-18" x1="10.191%" y1="100.000%" x2="50.000%" y2="33.060%">
+					<stop offset="0.000%" stop-color="#2e2a2b"/>
+				
+					<stop offset="50.000%" stop-color="#222023"/>
+				
+					<stop offset="100.000%" stop-color="#312d2e"/>
+				</linearGradient>
+	<linearGradient id="gradient-19" x1="100.000%" y1="100.000%" x2="37.234%" y2="46.119%">
+					<stop offset="0.000%" stop-color="#272528"/>
+				
+					<stop offset="50.000%" stop-color="#2d292a"/>
+				
+					<stop offset="100.000%" stop-color="#151318"/>
+				</linearGradient>
+	<linearGradient id="gradient-20" x1="15.385%" y1="100.000%" x2="50.000%" y2="37.629%">
+					<stop offset="0.000%" stop-color="#3d3c4a"/>
+				
+					<stop offset="50.000%" stop-color="#939eb4"/>
+				
+					<stop offset="100.000%" stop-color="#4e5160"/>
+				</linearGradient>
+	<linearGradient id="gradient-21" x1="11.881%" y1="100.000%" x2="50.000%" y2="37.761%">
+					<stop offset="0.000%" stop-color="#272528"/>
+				
+					<stop offset="50.000%" stop-color="#3b3c41"/>
+				
+					<stop offset="100.000%" stop-color="#492f22"/>
+				</linearGradient>
+	<linearGradient id="gradient-22" x1="67.133%" y1="100.000%" x2="50.000%" y2="1.356%">
+					<stop offset="0.000%" stop-color="#653c1e"/>
+				
+					<stop offset="50.000%" stop-color="#6f6657"/>
+				
+					<stop offset="100.000%" stop-color="#070707"/>
+				</linearGradient>
+	<linearGradient id="gradient-23" x1="58.723%" y1="82.927%" x2="50.000%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#845237"/>
+				
+					<stop offset="50.000%" stop-color="#825840"/>
+				
+					<stop offset="100.000%" stop-color="#9e5f40"/>
+				</linearGradient>
+	<linearGradient id="gradient-24" x1="0.000%" y1="100.000%" x2="83.571%" y2="2.835%">
+					<stop offset="0.000%" stop-color="#2e2a2b"/>
+				
+					<stop offset="50.000%" stop-color="#221c1c"/>
+				
+					<stop offset="100.000%" stop-color="#3a3949"/>
+				</linearGradient>
+	<linearGradient id="gradient-25" x1="100.000%" y1="44.538%" x2="37.308%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#c6ab90"/>
+				
+					<stop offset="50.000%" stop-color="#ceab85"/>
+				
+					<stop offset="100.000%" stop-color="#cc9c88"/>
+				</linearGradient>
+	<linearGradient id="gradient-26" x1="0.000%" y1="35.965%" x2="98.901%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#272528"/>
+				
+					<stop offset="50.000%" stop-color="#3e4150"/>
+				
+					<stop offset="100.000%" stop-color="#1f3b50"/>
+				</linearGradient>
+	<linearGradient id="gradient-27" x1="68.317%" y1="0.000%" x2="50.000%" y2="58.113%">
+					<stop offset="0.000%" stop-color="#845237"/>
+				
+					<stop offset="50.000%" stop-color="#ad6f5a"/>
+				
+					<stop offset="100.000%" stop-color="#492f22"/>
+				</linearGradient>
+	<linearGradient id="gradient-28" x1="42.667%" y1="100.000%" x2="50.000%" y2="42.384%">
+					<stop offset="0.000%" stop-color="#deb1ab"/>
+				
+					<stop offset="50.000%" stop-color="#e1b1ad"/>
+				
+					<stop offset="100.000%" stop-color="#d0acac"/>
+				</linearGradient>
+	<linearGradient id="gradient-29" x1="100.000%" y1="68.421%" x2="1.299%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#484b5a"/>
+				
+					<stop offset="50.000%" stop-color="#79839c"/>
+				
+					<stop offset="100.000%" stop-color="#1f3b50"/>
+				</linearGradient>
+	<linearGradient id="gradient-30" x1="55.844%" y1="0.000%" x2="50.000%" y2="61.386%">
+					<stop offset="0.000%" stop-color="#2f2b2c"/>
+				
+					<stop offset="50.000%" stop-color="#53535b"/>
+				
+					<stop offset="100.000%" stop-color="#222025"/>
+				</linearGradient>
+	<linearGradient id="gradient-31" x1="100.000%" y1="100.000%" x2="18.750%" y2="43.694%">
+					<stop offset="0.000%" stop-color="#394053"/>
+				
+					<stop offset="50.000%" stop-color="#0b0a10"/>
+				
+					<stop offset="100.000%" stop-color="#474344"/>
+				</linearGradient>
+	<linearGradient id="gradient-32" x1="100.000%" y1="100.000%" x2="22.000%" y2="8.889%">
+					<stop offset="0.000%" stop-color="#394053"/>
+				
+					<stop offset="50.000%" stop-color="#292b40"/>
+				
+					<stop offset="100.000%" stop-color="#404450"/>
+				</linearGradient>
+	<linearGradient id="gradient-33" x1="69.388%" y1="100.000%" x2="50.000%" y2="43.564%">
+					<stop offset="0.000%" stop-color="#484b5a"/>
+				
+					<stop offset="50.000%" stop-color="#474d5b"/>
+				
+					<stop offset="100.000%" stop-color="#4c4b50"/>
+				</linearGradient>
+	<linearGradient id="gradient-34" x1="74.257%" y1="0.000%" x2="50.000%" y2="70.000%">
+					<stop offset="0.000%" stop-color="#484b5a"/>
+				
+					<stop offset="50.000%" stop-color="#272e38"/>
+				
+					<stop offset="100.000%" stop-color="#2f3649"/>
+				</linearGradient>
+	<linearGradient id="gradient-35" x1="97.030%" y1="100.000%" x2="50.000%" y2="20.000%">
+					<stop offset="0.000%" stop-color="#394053"/>
+				
+					<stop offset="50.000%" stop-color="#313c52"/>
+				
+					<stop offset="100.000%" stop-color="#2f3649"/>
+				</linearGradient>
+	<linearGradient id="gradient-36" x1="100.000%" y1="76.563%" x2="27.372%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#737478"/>
+				
+					<stop offset="50.000%" stop-color="#656364"/>
+				
+					<stop offset="100.000%" stop-color="#d0acac"/>
+				</linearGradient>
+	<linearGradient id="gradient-37" x1="30.612%" y1="0.000%" x2="50.000%" y2="67.568%">
+					<stop offset="0.000%" stop-color="#424554"/>
+				
+					<stop offset="50.000%" stop-color="#737a8c"/>
+				
+					<stop offset="100.000%" stop-color="#535762"/>
+				</linearGradient>
+	<linearGradient id="gradient-38" x1="0.000%" y1="60.000%" x2="86.047%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#2f2b2c"/>
+				
+					<stop offset="50.000%" stop-color="#938680"/>
+				
+					<stop offset="100.000%" stop-color="#48474f"/>
+				</linearGradient>
+	<linearGradient id="gradient-39" x1="0.000%" y1="0.000%" x2="57.237%" y2="81.132%">
+					<stop offset="0.000%" stop-color="#0b0708"/>
+				
+					<stop offset="50.000%" stop-color="#332822"/>
+				
+					<stop offset="100.000%" stop-color="#160e0c"/>
+				</linearGradient>
+	<linearGradient id="gradient-40" x1="0.000%" y1="0.000%" x2="78.488%" y2="61.364%">
+					<stop offset="0.000%" stop-color="#2f2b2c"/>
+				
+					<stop offset="50.000%" stop-color="#60626f"/>
+				
+					<stop offset="100.000%" stop-color="#2b292e"/>
+				</linearGradient>
+	<linearGradient id="gradient-41" x1="100.000%" y1="26.667%" x2="26.531%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#7f8da8"/>
+				
+					<stop offset="50.000%" stop-color="#5d6e8a"/>
+				
+					<stop offset="100.000%" stop-color="#526174"/>
+				</linearGradient>
+	<linearGradient id="gradient-42" x1="100.000%" y1="23.529%" x2="41.111%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#606779"/>
+				
+					<stop offset="50.000%" stop-color="#525e76"/>
+				
+					<stop offset="100.000%" stop-color="#2b292e"/>
+				</linearGradient>
+	<linearGradient id="gradient-43" x1="100.000%" y1="0.000%" x2="37.240%" y2="99.154%">
+					<stop offset="0.000%" stop-color="#070506"/>
+				
+					<stop offset="50.000%" stop-color="#050304"/>
+				
+					<stop offset="100.000%" stop-color="#070707"/>
+				</linearGradient>
+	<linearGradient id="gradient-44" x1="0.000%" y1="26.000%" x2="85.417%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#424554"/>
+				
+					<stop offset="50.000%" stop-color="#2a292e"/>
+				
+					<stop offset="100.000%" stop-color="#4e596f"/>
+				</linearGradient>
+	<linearGradient id="gradient-45" x1="93.750%" y1="0.000%" x2="50.000%" y2="87.500%">
+					<stop offset="0.000%" stop-color="#606779"/>
+				
+					<stop offset="50.000%" stop-color="#8894ac"/>
+				
+					<stop offset="100.000%" stop-color="#70788d"/>
+				</linearGradient>
+	<linearGradient id="gradient-46" x1="47.445%" y1="0.000%" x2="50.000%" y2="70.122%">
+					<stop offset="0.000%" stop-color="#c6ab90"/>
+				
+					<stop offset="50.000%" stop-color="#b38c7b"/>
+				
+					<stop offset="100.000%" stop-color="#e9c4cc"/>
+				</linearGradient>
+	<linearGradient id="gradient-47" x1="0.000%" y1="100.000%" x2="58.824%" y2="5.714%">
+					<stop offset="0.000%" stop-color="#1b191a"/>
+				
+					<stop offset="50.000%" stop-color="#47423e"/>
+				
+					<stop offset="100.000%" stop-color="#241e22"/>
+				</linearGradient>
+	<linearGradient id="gradient-48" x1="0.000%" y1="100.000%" x2="73.469%" y2="37.879%">
+					<stop offset="0.000%" stop-color="#bf9aab"/>
+				
+					<stop offset="50.000%" stop-color="#986878"/>
+				
+					<stop offset="100.000%" stop-color="#879ec0"/>
+				</linearGradient>
+	<linearGradient id="gradient-49" x1="100.000%" y1="76.000%" x2="21.875%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#62626e"/>
+				
+					<stop offset="50.000%" stop-color="#3e3e40"/>
+				
+					<stop offset="100.000%" stop-color="#4e596f"/>
+				</linearGradient>
+	<linearGradient id="gradient-50" x1="100.000%" y1="62.963%" x2="2.174%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#3e4c66"/>
+				
+					<stop offset="50.000%" stop-color="#667f9e"/>
+				
+					<stop offset="100.000%" stop-color="#312d46"/>
+				</linearGradient>
+	<linearGradient id="gradient-51" x1="0.000%" y1="23.881%" x2="87.121%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#bf9aab"/>
+				
+					<stop offset="50.000%" stop-color="#fef9ff"/>
+				
+					<stop offset="100.000%" stop-color="#55698a"/>
+				</linearGradient>
+	<linearGradient id="gradient-52" x1="100.000%" y1="0.000%" x2="13.768%" y2="82.609%">
+					<stop offset="0.000%" stop-color="#3e4c66"/>
+				
+					<stop offset="50.000%" stop-color="#6f87ad"/>
+				
+					<stop offset="100.000%" stop-color="#313e51"/>
+				</linearGradient>
+	<linearGradient id="gradient-53" x1="81.250%" y1="100.000%" x2="50.000%" y2="9.677%">
+					<stop offset="0.000%" stop-color="#54647d"/>
+				
+					<stop offset="50.000%" stop-color="#08091d"/>
+				
+					<stop offset="100.000%" stop-color="#1c1d21"/>
+				</linearGradient>
+	<linearGradient id="gradient-54" x1="0.000%" y1="10.870%" x2="86.923%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#c6ab90"/>
+				
+					<stop offset="50.000%" stop-color="#d2b8a1"/>
+				
+					<stop offset="100.000%" stop-color="#d8b8a1"/>
+				</linearGradient>
+	<linearGradient id="gradient-55" x1="94.708%" y1="0.000%" x2="50.000%" y2="57.373%">
+					<stop offset="0.000%" stop-color="#394053"/>
+				
+					<stop offset="50.000%" stop-color="#2b3043"/>
+				
+					<stop offset="100.000%" stop-color="#3a4960"/>
+				</linearGradient>
+	<linearGradient id="gradient-56" x1="0.000%" y1="100.000%" x2="55.172%" y2="28.226%">
+					<stop offset="0.000%" stop-color="#54647d"/>
+				
+					<stop offset="50.000%" stop-color="#181621"/>
+				
+					<stop offset="100.000%" stop-color="#3b4053"/>
+				</linearGradient>
+	<linearGradient id="gradient-57" x1="100.000%" y1="55.714%" x2="31.707%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#77633e"/>
+				
+					<stop offset="50.000%" stop-color="#6f6e76"/>
+				
+					<stop offset="100.000%" stop-color="#3b4053"/>
+				</linearGradient>
+	<linearGradient id="gradient-58" x1="29.310%" y1="100.000%" x2="50.000%" y2="14.362%">
+					<stop offset="0.000%" stop-color="#3e4c66"/>
+				
+					<stop offset="50.000%" stop-color="#637897"/>
+				
+					<stop offset="100.000%" stop-color="#2f3243"/>
+				</linearGradient>
+	<linearGradient id="gradient-59" x1="0.000%" y1="87.755%" x2="96.531%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#0b0708"/>
+				
+					<stop offset="50.000%" stop-color="#090708"/>
+				
+					<stop offset="100.000%" stop-color="#070506"/>
+				</linearGradient>
+	<linearGradient id="gradient-60" x1="6.275%" y1="100.000%" x2="50.000%" y2="45.389%">
+					<stop offset="0.000%" stop-color="#606779"/>
+				
+					<stop offset="50.000%" stop-color="#51585e"/>
+				
+					<stop offset="100.000%" stop-color="#666050"/>
+				</linearGradient>
+	<linearGradient id="gradient-61" x1="100.000%" y1="0.000%" x2="7.921%" y2="84.127%">
+					<stop offset="0.000%" stop-color="#56513b"/>
+				
+					<stop offset="50.000%" stop-color="#605b47"/>
+				
+					<stop offset="100.000%" stop-color="#48474f"/>
+				</linearGradient>
+	<linearGradient id="gradient-62" x1="0.000%" y1="100.000%" x2="58.416%" y2="20.788%">
+					<stop offset="0.000%" stop-color="#737478"/>
+				
+					<stop offset="50.000%" stop-color="#868372"/>
+				
+					<stop offset="100.000%" stop-color="#594e32"/>
+				</linearGradient>
+	<linearGradient id="gradient-63" x1="0.000%" y1="0.000%" x2="51.456%" y2="70.207%">
+					<stop offset="0.000%" stop-color="#606779"/>
+				
+					<stop offset="50.000%" stop-color="#59616c"/>
+				
+					<stop offset="100.000%" stop-color="#56657c"/>
+				</linearGradient>
+	<linearGradient id="gradient-64" x1="18.000%" y1="66.087%" x2="50.000%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#62626e"/>
+				
+					<stop offset="50.000%" stop-color="#363c4a"/>
+				
+					<stop offset="100.000%" stop-color="#56657c"/>
+				</linearGradient>
+	<linearGradient id="gradient-65" x1="20.792%" y1="100.000%" x2="50.000%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#0c0a0d"/>
+				
+					<stop offset="50.000%" stop-color="#080607"/>
+				
+					<stop offset="100.000%" stop-color="#060608"/>
+				</linearGradient>
+	<linearGradient id="gradient-66" x1="100.000%" y1="95.745%" x2="10.174%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#816c41"/>
+				
+					<stop offset="50.000%" stop-color="#897749"/>
+				
+					<stop offset="100.000%" stop-color="#5f7c9e"/>
+				</linearGradient>
+	<linearGradient id="gradient-67" x1="18.692%" y1="0.000%" x2="50.000%" y2="57.346%">
+					<stop offset="0.000%" stop-color="#77633e"/>
+				
+					<stop offset="50.000%" stop-color="#766440"/>
+				
+					<stop offset="100.000%" stop-color="#3a3027"/>
+				</linearGradient>
+	<linearGradient id="gradient-68" x1="42.562%" y1="100.000%" x2="50.000%" y2="20.669%">
+					<stop offset="0.000%" stop-color="#77633e"/>
+				
+					<stop offset="50.000%" stop-color="#493721"/>
+				
+					<stop offset="100.000%" stop-color="#605e51"/>
+				</linearGradient>
+	<linearGradient id="gradient-69" x1="0.000%" y1="100.000%" x2="74.690%" y2="30.403%">
+					<stop offset="0.000%" stop-color="#606779"/>
+				
+					<stop offset="50.000%" stop-color="#5b3214"/>
+				
+					<stop offset="100.000%" stop-color="#6e6556"/>
+				</linearGradient>
+	<linearGradient id="gradient-70" x1="0.000%" y1="100.000%" x2="59.940%" y2="4.000%">
+					<stop offset="0.000%" stop-color="#667d9f"/>
+				
+					<stop offset="50.000%" stop-color="#7e93b0"/>
+				
+					<stop offset="100.000%" stop-color="#95814e"/>
+				</linearGradient>
+	<linearGradient id="gradient-71" x1="100.000%" y1="0.000%" x2="0.732%" y2="100.000%">
+					<stop offset="0.000%" stop-color="#070506"/>
+				
+					<stop offset="50.000%" stop-color="#0b0706"/>
+				
+					<stop offset="100.000%" stop-color="#1b1811"/>
+				</linearGradient>
+	<linearGradient id="gradient-72" x1="96.903%" y1="100.000%" x2="50.000%" y2="31.761%">
+					<stop offset="0.000%" stop-color="#6c5c3a"/>
+				
+					<stop offset="50.000%" stop-color="#715f3b"/>
+				
+					<stop offset="100.000%" stop-color="#746139"/>
+				</linearGradient>
+	<linearGradient id="gradient-73" x1="100.000%" y1="0.000%" x2="46.942%" y2="80.463%">
+					<stop offset="0.000%" stop-color="#534e52"/>
+				
+					<stop offset="50.000%" stop-color="#b4c0bc"/>
+				
+					<stop offset="100.000%" stop-color="#2b1d1a"/>
+				</linearGradient>
+	<linearGradient id="gradient-74" x1="0.000%" y1="62.893%" x2="84.834%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#667d9f"/>
+				
+					<stop offset="50.000%" stop-color="#ac9d72"/>
+				
+					<stop offset="100.000%" stop-color="#7b683e"/>
+				</linearGradient>
+	<linearGradient id="gradient-75" x1="100.000%" y1="31.892%" x2="24.931%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#6c5c3a"/>
+				
+					<stop offset="50.000%" stop-color="#8b7a4c"/>
+				
+					<stop offset="100.000%" stop-color="#3a4960"/>
+				</linearGradient>
+	<linearGradient id="gradient-76" x1="100.000%" y1="0.000%" x2="17.847%" y2="66.300%">
+					<stop offset="0.000%" stop-color="#565044"/>
+				
+					<stop offset="50.000%" stop-color="#5d574b"/>
+				
+					<stop offset="100.000%" stop-color="#594e32"/>
+				</linearGradient>
+	<linearGradient id="gradient-77" x1="100.000%" y1="86.271%" x2="1.204%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#565044"/>
+				
+					<stop offset="50.000%" stop-color="#535145"/>
+				
+					<stop offset="100.000%" stop-color="#070506"/>
+				</linearGradient>
+	<linearGradient id="gradient-78" x1="100.000%" y1="0.000%" x2="26.982%" y2="75.913%">
+					<stop offset="0.000%" stop-color="#565044"/>
+				
+					<stop offset="50.000%" stop-color="#70756f"/>
+				
+					<stop offset="100.000%" stop-color="#6e6556"/>
+				</linearGradient>
+	<linearGradient id="gradient-79" x1="89.683%" y1="100.000%" x2="50.000%" y2="39.523%">
+					<stop offset="0.000%" stop-color="#6c5c3a"/>
+				
+					<stop offset="50.000%" stop-color="#503816"/>
+				
+					<stop offset="100.000%" stop-color="#70461c"/>
+				</linearGradient>
+	<linearGradient id="gradient-80" x1="6.746%" y1="0.000%" x2="50.000%" y2="64.722%">
+					<stop offset="0.000%" stop-color="#534e52"/>
+				
+					<stop offset="50.000%" stop-color="#b4c1ba"/>
+				
+					<stop offset="100.000%" stop-color="#70461c"/>
+				</linearGradient>
+	<linearGradient id="gradient-81" x1="0.000%" y1="73.367%" x2="94.468%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#534e52"/>
+				
+					<stop offset="50.000%" stop-color="#4f473a"/>
+				
+					<stop offset="100.000%" stop-color="#433832"/>
+				</linearGradient>
+		</defs>
+	<polygon points="0,0 0,1079 20,346" fill="url(#gradient-0)" stroke="url(#gradient-0)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="18,0 0,0 20,346" fill="url(#gradient-1)" stroke="url(#gradient-1)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="18,0 20,346 270,0" fill="url(#gradient-2)" stroke="url(#gradient-2)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="20,346 0,1079 253,540" fill="url(#gradient-3)" stroke="url(#gradient-3)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="0,1079 236,924 253,540" fill="url(#gradient-4)" stroke="url(#gradient-4)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="236,924 0,1079 472,1263" fill="url(#gradient-5)" stroke="url(#gradient-5)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="253,540 236,924 505,723" fill="url(#gradient-6)" stroke="url(#gradient-6)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="20,346 253,540 270,0" fill="url(#gradient-7)" stroke="url(#gradient-7)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="236,924 472,1263 592,1018" fill="url(#gradient-8)" stroke="url(#gradient-8)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="576,956 236,924 592,1018" fill="url(#gradient-9)" stroke="url(#gradient-9)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="505,723 236,924 576,956" fill="url(#gradient-10)" stroke="url(#gradient-10)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="253,540 505,723 680,604" fill="url(#gradient-11)" stroke="url(#gradient-11)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="505,723 576,956 733,835" fill="url(#gradient-12)" stroke="url(#gradient-12)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="270,0 253,540 750,295" fill="url(#gradient-13)" stroke="url(#gradient-13)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="253,540 680,604 750,295" fill="url(#gradient-14)" stroke="url(#gradient-14)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="680,604 505,723 733,835" fill="url(#gradient-15)" stroke="url(#gradient-15)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="774,630 733,835 802,824" fill="url(#gradient-16)" stroke="url(#gradient-16)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="680,604 733,835 774,630" fill="url(#gradient-17)" stroke="url(#gradient-17)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="576,956 592,1018 733,835" fill="url(#gradient-18)" stroke="url(#gradient-18)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="750,295 680,604 774,630" fill="url(#gradient-19)" stroke="url(#gradient-19)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="774,630 802,824 956,776" fill="url(#gradient-20)" stroke="url(#gradient-20)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="750,295 774,630 952,548" fill="url(#gradient-21)" stroke="url(#gradient-21)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="270,0 750,295 985,8" fill="url(#gradient-22)" stroke="url(#gradient-22)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="750,295 888,246 985,8" fill="url(#gradient-23)" stroke="url(#gradient-23)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="733,835 592,1018 802,824" fill="url(#gradient-24)" stroke="url(#gradient-24)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="985,8 888,246 1018,114" fill="url(#gradient-25)" stroke="url(#gradient-25)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="952,548 774,630 956,776" fill="url(#gradient-26)" stroke="url(#gradient-26)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="888,246 750,295 952,548" fill="url(#gradient-27)" stroke="url(#gradient-27)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="888,246 952,548 1038,502" fill="url(#gradient-28)" stroke="url(#gradient-28)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="952,548 956,776 1106,704" fill="url(#gradient-29)" stroke="url(#gradient-29)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1038,502 952,548 1106,704" fill="url(#gradient-30)" stroke="url(#gradient-30)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="802,824 592,1018 1152,1046" fill="url(#gradient-31)" stroke="url(#gradient-31)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="956,776 802,824 1152,1046" fill="url(#gradient-32)" stroke="url(#gradient-32)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1038,502 1106,704 1136,678" fill="url(#gradient-33)" stroke="url(#gradient-33)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1106,704 956,776 1158,884" fill="url(#gradient-34)" stroke="url(#gradient-34)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="956,776 1152,1046 1158,884" fill="url(#gradient-35)" stroke="url(#gradient-35)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="888,246 1038,502 1162,442" fill="url(#gradient-36)" stroke="url(#gradient-36)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1136,678 1106,704 1204,752" fill="url(#gradient-37)" stroke="url(#gradient-37)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1162,442 1038,502 1210,542" fill="url(#gradient-38)" stroke="url(#gradient-38)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="985,8 1018,114 1213,74" fill="url(#gradient-39)" stroke="url(#gradient-39)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1038,502 1136,678 1210,542" fill="url(#gradient-40)" stroke="url(#gradient-40)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1106,704 1158,884 1204,752" fill="url(#gradient-41)" stroke="url(#gradient-41)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1210,542 1136,678 1226,574" fill="url(#gradient-42)" stroke="url(#gradient-42)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="270,0 985,8 1230,-465" fill="url(#gradient-43)" stroke="url(#gradient-43)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1136,678 1204,752 1232,652" fill="url(#gradient-44)" stroke="url(#gradient-44)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1226,574 1136,678 1232,652" fill="url(#gradient-45)" stroke="url(#gradient-45)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1018,114 888,246 1162,442" fill="url(#gradient-46)" stroke="url(#gradient-46)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="592,1018 472,1263 1152,1046" fill="url(#gradient-47)" stroke="url(#gradient-47)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1204,752 1158,884 1256,852" fill="url(#gradient-48)" stroke="url(#gradient-48)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1232,652 1204,752 1268,728" fill="url(#gradient-49)" stroke="url(#gradient-49)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1158,884 1152,1046 1290,986" fill="url(#gradient-50)" stroke="url(#gradient-50)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1256,852 1158,884 1290,986" fill="url(#gradient-51)" stroke="url(#gradient-51)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1152,1046 1190,1078 1290,986" fill="url(#gradient-52)" stroke="url(#gradient-52)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1204,752 1256,852 1268,728" fill="url(#gradient-53)" stroke="url(#gradient-53)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1018,114 1162,442 1213,74" fill="url(#gradient-54)" stroke="url(#gradient-54)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1152,1046 472,1263 1190,1078" fill="url(#gradient-55)" stroke="url(#gradient-55)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1268,728 1256,852 1372,798" fill="url(#gradient-56)" stroke="url(#gradient-56)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1268,728 1372,798 1432,767" fill="url(#gradient-57)" stroke="url(#gradient-57)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1256,852 1290,986 1372,798" fill="url(#gradient-58)" stroke="url(#gradient-58)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="985,8 1213,74 1230,-465" fill="url(#gradient-59)" stroke="url(#gradient-59)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1210,542 1226,574 1465,227" fill="url(#gradient-60)" stroke="url(#gradient-60)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1162,442 1210,542 1465,227" fill="url(#gradient-61)" stroke="url(#gradient-61)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1213,74 1162,442 1465,227" fill="url(#gradient-62)" stroke="url(#gradient-62)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1226,574 1232,652 1432,767" fill="url(#gradient-63)" stroke="url(#gradient-63)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1232,652 1268,728 1432,767" fill="url(#gradient-64)" stroke="url(#gradient-64)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="18,0 270,0 1230,-465" fill="url(#gradient-65)" stroke="url(#gradient-65)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1372,798 1290,986 1693,978" fill="url(#gradient-66)" stroke="url(#gradient-66)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1432,767 1372,798 1693,978" fill="url(#gradient-67)" stroke="url(#gradient-67)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1226,574 1432,767 1710,438" fill="url(#gradient-68)" stroke="url(#gradient-68)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1465,227 1226,574 1710,438" fill="url(#gradient-69)" stroke="url(#gradient-69)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1290,986 1190,1078 1693,978" fill="url(#gradient-70)" stroke="url(#gradient-70)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="0,0 18,0 1230,-465" fill="url(#gradient-71)" stroke="url(#gradient-71)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1693,978 1912,1137 1919,1079" fill="url(#gradient-72)" stroke="url(#gradient-72)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1432,767 1693,978 1710,438" fill="url(#gradient-73)" stroke="url(#gradient-73)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1693,978 1190,1078 1912,1137" fill="url(#gradient-74)" stroke="url(#gradient-74)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1190,1078 472,1263 1912,1137" fill="url(#gradient-75)" stroke="url(#gradient-75)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1213,74 1465,227 1919,0" fill="url(#gradient-76)" stroke="url(#gradient-76)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1230,-465 1213,74 1919,0" fill="url(#gradient-77)" stroke="url(#gradient-77)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1465,227 1710,438 1919,0" fill="url(#gradient-78)" stroke="url(#gradient-78)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1693,978 1919,1079 1945,597" fill="url(#gradient-79)" stroke="url(#gradient-79)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1710,438 1693,978 1945,597" fill="url(#gradient-80)" stroke="url(#gradient-80)" stroke-width="1" stroke-linejoin="miter"/>
+	<polygon points="1919,0 1710,438 1945,597" fill="url(#gradient-81)" stroke="url(#gradient-81)" stroke-width="1" stroke-linejoin="miter"/>
+	
+</svg>

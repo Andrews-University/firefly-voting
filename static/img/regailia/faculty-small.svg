@@ -1,0 +1,94 @@
+<?xml version="1.0" standalone="yes"?>
+<svg width="900" height="600" xmlns="http://www.w3.org/2000/svg" version="1.1" >
+	<defs>
+	<linearGradient id="gradient-0" x1="62.112%" y1="100.000%" x2="50.000%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#dfd5cc"/>
+				
+					<stop offset="50.000%" stop-color="#ded4ca"/>
+				
+					<stop offset="100.000%" stop-color="#dcd3ca"/>
+				</linearGradient>
+	<linearGradient id="gradient-1" x1="0.000%" y1="70.323%" x2="92.361%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#dfd5cc"/>
+				
+					<stop offset="50.000%" stop-color="#dfd5c9"/>
+				
+					<stop offset="100.000%" stop-color="#e1d4c4"/>
+				</linearGradient>
+	<linearGradient id="gradient-2" x1="0.000%" y1="60.750%" x2="61.693%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#fcfcfc"/>
+				
+					<stop offset="50.000%" stop-color="#fcfcfc"/>
+				
+					<stop offset="100.000%" stop-color="#eadacd"/>
+				</linearGradient>
+	<linearGradient id="gradient-3" x1="67.929%" y1="0.000%" x2="50.000%" y2="61.500%">
+					<stop offset="0.000%" stop-color="#dfd5cc"/>
+				
+					<stop offset="50.000%" stop-color="#e2dacf"/>
+				
+					<stop offset="100.000%" stop-color="#e2d5cc"/>
+				</linearGradient>
+	<linearGradient id="gradient-4" x1="34.426%" y1="0.000%" x2="50.000%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#f3f7fa"/>
+				
+					<stop offset="50.000%" stop-color="#f9f9fb"/>
+				
+					<stop offset="100.000%" stop-color="#fdfdfd"/>
+				</linearGradient>
+	<linearGradient id="gradient-5" x1="0.000%" y1="100.000%" x2="72.280%" y2="29.586%">
+					<stop offset="0.000%" stop-color="#7e5e49"/>
+				
+					<stop offset="50.000%" stop-color="#baaba4"/>
+				
+					<stop offset="100.000%" stop-color="#00103b"/>
+				</linearGradient>
+	<linearGradient id="gradient-6" x1="6.707%" y1="100.000%" x2="50.000%" y2="11.153%">
+					<stop offset="0.000%" stop-color="#e1d0bc"/>
+				
+					<stop offset="50.000%" stop-color="#dfd2c2"/>
+				
+					<stop offset="100.000%" stop-color="#d1c5b9"/>
+				</linearGradient>
+	<linearGradient id="gradient-7" x1="100.000%" y1="100.000%" x2="42.937%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#64605f"/>
+				
+					<stop offset="50.000%" stop-color="#001f60"/>
+				
+					<stop offset="100.000%" stop-color="#113981"/>
+				</linearGradient>
+	<linearGradient id="gradient-8" x1="0.000%" y1="23.469%" x2="88.559%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#e1d0bc"/>
+				
+					<stop offset="50.000%" stop-color="#966753"/>
+				
+					<stop offset="100.000%" stop-color="#deceb7"/>
+				</linearGradient>
+	<linearGradient id="gradient-9" x1="100.000%" y1="76.942%" x2="27.568%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#bdb7a9"/>
+				
+					<stop offset="50.000%" stop-color="#cec1ae"/>
+				
+					<stop offset="100.000%" stop-color="#c7bdb1"/>
+				</linearGradient>
+	<linearGradient id="gradient-10" x1="0.000%" y1="65.442%" x2="100.000%" y2="50.000%">
+					<stop offset="0.000%" stop-color="#a3b8c9"/>
+				
+					<stop offset="50.000%" stop-color="#e8f1fa"/>
+				
+					<stop offset="100.000%" stop-color="#dadad8"/>
+				</linearGradient>
+		</defs>
+	<polygon points="0,0 200,0 322,-218" fill="url(#gradient-0)" stroke="url(#gradient-0)" stroke-width="0.5" stroke-linejoin="miter"/>
+	<polygon points="322,-218 200,0 344,92" fill="url(#gradient-1)" stroke="url(#gradient-1)" stroke-width="0.5" stroke-linejoin="miter"/>
+	<polygon points="-105,400 0,599 344,92" fill="url(#gradient-2)" stroke="url(#gradient-2)" stroke-width="0.5" stroke-linejoin="miter"/>
+	<polygon points="200,0 -105,400 344,92" fill="url(#gradient-3)" stroke="url(#gradient-3)" stroke-width="0.5" stroke-linejoin="miter"/>
+	<polygon points="0,0 -105,400 200,0" fill="url(#gradient-4)" stroke="url(#gradient-4)" stroke-width="0.5" stroke-linejoin="miter"/>
+	<polygon points="344,92 0,599 772,392" fill="url(#gradient-5)" stroke="url(#gradient-5)" stroke-width="0.5" stroke-linejoin="miter"/>
+	<polygon points="322,-218 344,92 650,-307" fill="url(#gradient-6)" stroke="url(#gradient-6)" stroke-width="0.5" stroke-linejoin="miter"/>
+	<polygon points="772,392 0,599 899,599" fill="url(#gradient-7)" stroke="url(#gradient-7)" stroke-width="0.5" stroke-linejoin="miter"/>
+	<polygon points="344,92 772,392 899,0" fill="url(#gradient-8)" stroke="url(#gradient-8)" stroke-width="0.5" stroke-linejoin="miter"/>
+	<polygon points="650,-307 344,92 899,0" fill="url(#gradient-9)" stroke="url(#gradient-9)" stroke-width="0.5" stroke-linejoin="miter"/>
+	<polygon points="772,392 899,599 899,0" fill="url(#gradient-10)" stroke="url(#gradient-10)" stroke-width="0.5" stroke-linejoin="miter"/>
+	
+</svg>
