@@ -41,13 +41,16 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="en")
 			}
 			.firefly-layout {
 				margin-top: 30px;
-				display: grid;
-				grid-template-columns: auto auto;
-				row-gap: 1em;
-				column-gap: 1em;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+			}
+			.firefly-tile {
+				flex-basis: 50%;
 			}
 			.firefly-tile.vote {
-				grid-column: 1/3;
+				order: -1;
+				flex-basis: 100%
 			}
 			.firefly-tile-overlay {
 				display: none;
