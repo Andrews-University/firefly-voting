@@ -1,7 +1,7 @@
 {
-  "name": "firefly-client",
+  "name": "firefly-server",
   "version": "1.0.0",
-  "description": "Client to the firefly polling application",
+  "description": "Server for the firefly polling application",
   "main": "index.js",
   "author": "webstrand",
   "license": "UNLICENSED",
