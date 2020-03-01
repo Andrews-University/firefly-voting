@@ -12,6 +12,12 @@ onEvent(socket, FireflyEvent.State, ({current_category, voting_is_open}) => {
 		}
 		else {
 			element.classList.remove("running");
+
+			// When we *switch* categories, we reset the selected vote.
+			// The client sometimes reconnects, and will receive a new State event
+			// but without changeing category.
+			const tiles = Array.from(element.getElementsByClassName("firefly-tile")) as HTMLElement[];
+			tiles.forEach((tile) => tile.classList.remove("vote"));
 		}
 	});
 });

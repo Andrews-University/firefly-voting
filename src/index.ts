@@ -54,6 +54,8 @@ function joinAdmin(socket: socketio.Socket) {
 		}
 		else if(command === "reset_category") {
 			resetVotes(state.current_category);
+			// Force the clients to reset their selected vote
+			emitEvent(io, FireflyEvent.State, { current_category: state.current_category, voting_is_open: false });
 		}
 
 		emitEvent(io, FireflyEvent.State, state);
