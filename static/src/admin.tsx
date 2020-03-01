@@ -34,3 +34,7 @@ onEvent(socket, FireflyEvent.State, ({current_category, voting_is_open}) => {
 
 onEvent(socket, FireflyEvent.Info, (message) => log(message));
 
+onEvent(socket, FireflyEvent.Vote, ({uuid, category, candidate}) => {
+	log(<b>Vote</b>,` category ${category} for candidate #${candidate}   (`, <em>{uuid}</em>, `)`);
+});
+
