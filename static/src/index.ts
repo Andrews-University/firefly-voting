@@ -2,7 +2,7 @@ import {socket} from './socket';
 import {clientUUID} from "./uuid";
 import { emitEvent, FireflyEvent, onEvent } from './events';
 
-const categories = Array.from(document.getElementsByClassName("firefly-category")) as HTMLDivElement[];
+const categories = Array.from(document.getElementsByClassName("firefly-category")) as HTMLElement[];
 
 
 onEvent(socket, FireflyEvent.State, ({current_category, voting_is_open}) => {

@@ -16,13 +16,13 @@ const server = http.createServer(router);
 const io = socketio(server, { path: "/firefly/socket.io" });
 
 const state = {
-	voting_is_open: getState('voting_is_open'),
-	current_category: getState('current_category')
+	voting_is_open: getState("voting_is_open"),
+	current_category: getState("current_category")
 };
 
 // We don't care who's accessing us, it's wide-open.
 router.use(cors());
-//router.use(morgan('combined'));
+//router.use(morgan("combined"));
 
 router.use("/firefly", express.static("static"));
 
