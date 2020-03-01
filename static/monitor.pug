@@ -50,13 +50,15 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="en")
 			.firefly-tile-counter {
 				white-space: nowrap;
 				background-color: #fff;
+				color: #888;
+				font-family: Helvetica;
 			}
 
 	mixin firefly-tile(id, src)
 		.firefly-tile(data-id=id)
 			img.img-fluid.animated(src=src)
 			.firefly-tile-counter
-				h1
+				h2
 					span.firefly-tile-counter-value 0
 					|  votes
 	mixin firefly-category(id, title, a, b, c, d)
