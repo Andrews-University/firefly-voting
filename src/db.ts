@@ -1,59 +1,148 @@
 import sqlite3 from 'better-sqlite3';
-export const db = migrate(sqlite3("firefly.sqlite3"));
+export const db = sqlite3("firefly.sqlite3");
 
-export function migrate(db: sqlite3.Database) {
-	let user_version = db.pragma("user_version", { simple: true });
+class Migration {
+	readonly up: string;
+	readonly down: string;
+	constructor(up: string, down: string) {
+		this.up = Migration.unindent(up);
+		this.down = Migration.unindent(down);
+	}
 
-	if(user_version === 0) {migrate_from_0(db)}
-	else if(user_version === 1) {migrate_from_1(db)}
-	else if(user_version === 2) {migrate_from_2(db)}
-	else if(user_version === 3) {
-		console.info("user_version is current, migration finished");
+	static unindent(multiline: string) {
+		const ws = (/^(?:\s*\n)?([^\S\n]+)/.exec(multiline) || [])[1];
+		if(!ws) return multiline;
+		return multiline
+			.replace(new RegExp(`^${ws}`, "gm"), "")
+			.replace(/^\s*|\s*$/, "");
 	}
-	else {
-		throw new Error("user_version is more recent than the current version");
-	}
-	return db;
 }
 
-function migrate_from_0(db: sqlite3.Database) {
-	console.info("performing migration from user_version = 0 to user_version = 1");
-	db.prepare(`
+/*
+ * CAUTION: Changing any existing migration will cause *ALL* suceeding
+ * migrations to be rolled back and then reapplied to the database. This
+ * has to potential to cause *MASSIVE* amounts of data-loss.
+ *
+ * Only make changes to the *FINAL* migration if possible, and the only
+ * during development. If you need to make changes to the database
+ * sturcture, write a *NEW* migration.
+ */
+perform_migration(db,
+	new Migration(
+	/* up */`
 	CREATE TABLE state (
 		name TEXT PRIMARY KEY,
 		value TEXT
 	);
-	`).run();
-	db.prepare(`
-	INSERT INTO state (name, value) VALUES ('current_category', '0');
-	`).run();
-	db.pragma("user_version = 1");
-	migrate(db);
-}
 
-function migrate_from_1(db: sqlite3.Database) {
-	console.info("performing migration from user_version = 1 to user_version = 2");
-	db.prepare(`
-	INSERT INTO state (name, value) VALUES ('voting_is_open', 'false');
-	`).run();
-	db.pragma("user_version = 2");
-	migrate(db);
-}
+	INSERT INTO state
+		(name, value)
+	VALUES
+		('current_category', '0');
+	`,
+	/* down */`
+	DROP TABLE state;
+	`),
 
-function migrate_from_2(db: sqlite3.Database) {
-	console.info("performing migration from user_version = 1 to user_version = 2");
-	db.prepare(`
+
+	new Migration(
+	/* up */`
+	INSERT INTO state
+		(name, value)
+	VALUES
+		('voting_is_open', 'false');
+	`,
+	/* down */`
+	DELETE FROM state
+	WHERE name = 'voting_is_open';
+	`),
+
+
+	new Migration(
+	/* up */`
 	CREATE TABLE votes (
 		uuid TEXT,
 		category NUMBER,
 		candidate NUMBER,
 		PRIMARY KEY (uuid, category)
 	);
-	`).run();
-	db.pragma("user_version = 3");
-	migrate(db);
-}
+	`,
+	/* down */`
+	DROP TABLE votes;
+	`),
+);
 
+
+/**
+ * Perform the `migrations` to bring the database into compliance with the
+ * currently running application.
+ *
+ * This can be a very destructive process if the database's migration set
+ * diverges from the current `migrations`. Migrations that have been applied
+ * to the data that diverge from the known migrations will be rolled back,
+ * with potential destructive side-effects.
+ *
+ * This trade-off has been selected, because it is more important that this
+ * application *run* than it is to preserve data that is either corrupt
+ * or in an incompatible shape.
+ *
+ */
+function perform_migration(db: sqlite3.Database, ...migrations: Migration[]) {
+	db.exec(`
+	CREATE TABLE IF NOT EXISTS user_versions (
+		version  INTEGER NOT NULL PRIMARY KEY,
+		up       TEXT NOT NULL,
+		down     TEXT NOT NULL
+	);
+	`);
+
+	const applied_migrations: { version: number, up: string, down: string, lossless: number }[]
+		= db.prepare(`SELECT version, up, down FROM user_versions ORDER BY version ASC`).all();
+
+	// Find the point of divergence between the set of applied and known migrations.
+	let div = 0;
+	for(; div < applied_migrations.length && div < migrations.length; div++) {
+		if(applied_migrations[div].up !== migrations[div].up) break;
+	}
+
+	const record = db.prepare(`INSERT INTO user_versions (version, up, down) VALUES (?, ?, ?)`);
+	const unrecord = db.prepare(`DELETE FROM user_versions WHERE version = ?`);
+
+	// If the known migrations diverge from the applied migrations
+	if(div < applied_migrations.length) {
+		// Rollback the applied migrations
+		for(let i = applied_migrations.length - 1; div <= i; i--) {
+			console.warn(`Rolling back migration ${i}:\n${applied_migrations[i].down}`);
+			db.exec("BEGIN");
+			try {
+				db.exec(applied_migrations[i].down);
+				unrecord.run(applied_migrations[i].version);
+				db.pragma(`user_version = ${i}`);
+				db.exec("COMMIT");
+			}
+			catch (err) {
+				db.exec("ROLLBACK");
+				throw err;
+			}
+		}
+	}
+
+	// Apply the new migrations
+	for(let i = div; i < migrations.length; i++) {
+		console.warn(`Applying migration ${i}:\n${migrations[i].up}`);
+		db.exec("BEGIN");
+		try {
+			db.exec(migrations[i].up);
+			record.run(i, migrations[i].up, migrations[i].down);
+			db.pragma(`user_version = ${i}`);
+			db.exec("COMMIT");
+		}
+		catch(err) {
+			db.exec("ROLLBACK");
+			throw err;
+		}
+	}
+}
 
 const _getState = db.prepare(`
 SELECT value FROM state WHERE name = ?
