@@ -1,11 +1,11 @@
 import {socket} from './socket';
 import {clientUUID} from "./uuid";
-import { emitEvent, FireflyEvent, onEvent } from './events';
+import { emitEvent, Event, onEvent } from './events';
 
 const categories = Array.from(document.getElementsByClassName("firefly-category")) as HTMLElement[];
 
 
-onEvent(socket, FireflyEvent.State, ({current_category, voting_is_open}) => {
+onEvent(socket, Event.State, ({current_category, voting_is_open}) => {
 	categories.forEach((element) => {
 		if(+(element.dataset.id || NaN) === current_category && voting_is_open) {
 			element.classList.add("running");
@@ -63,5 +63,5 @@ document.addEventListener("click", (ev) => {
 	categoryTarget.classList.add("voted");
 	target.classList.add("vote");
 	console.log("Vote", { uuid: clientUUID, category: +category_id, candidate: +candidate_id });
-	emitEvent(socket, FireflyEvent.Vote, { uuid: clientUUID, category: +category_id, candidate: +candidate_id });
+	emitEvent(socket, Event.Vote, { uuid: clientUUID, category: +category_id, candidate: +candidate_id });
 });

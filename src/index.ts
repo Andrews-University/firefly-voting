@@ -5,7 +5,7 @@ import path from "path";
 import socketio from "socket.io";
 import morgan from "morgan";
 import { getState, setState, recordVote, resetVotes, tallyVotes } from "./db";
-import { SecretRoom, FireflyEvent, emitEvent, onEvent } from "./events";
+import { Event, Secret, emitEvent, onEvent } from "./events";
 
 const __dirname = path.resolve();
 
@@ -13,7 +13,7 @@ const { PORT = 8080 } = process.env;
 
 const router = express();
 const server = http.createServer(router);
-const io = socketio(server, { path: "/firefly/socket.io" });
+const io = socketio(server, { path: "/firefly/socket.io", serveClient: false });
 
 const state = {
 	voting_is_open: getState("voting_is_open"),
@@ -27,21 +27,21 @@ router.use(cors());
 router.use("/firefly", express.static("static"));
 
 const monitors = () => io.to("monitor");
-const admins = () => io.to(SecretRoom);
+const admins = () => io.to("admin");
 
 function joinMonitor(socket: socketio.Socket) {
 	socket.join("monitor");
-	emitEvent(admins(), FireflyEvent.Info, "monitor connected");
+	emitEvent(admins(), Event.Info, "monitor connected");
 	const votes = tallyVotes(state.current_category);
-	emitEvent(socket, FireflyEvent.Stats, { category: state.current_category, votes });
+	emitEvent(socket, Event.Stats, { category: state.current_category, votes });
 
 }
 
 function joinAdmin(socket: socketio.Socket) {
-	socket.join(SecretRoom);
-	emitEvent(admins(), FireflyEvent.Info, "admin connected");
+	socket.join("admin");
+	emitEvent(admins(), Event.Info, "admin connected");
 
-	onEvent(socket, FireflyEvent.Admin, function handleAdminCommand(command) {
+	onEvent(socket, Event.Admin, function handleAdminCommand(command) {
 		if(command === "open_category" || command === "close_category") {
 			state.voting_is_open = setState("voting_is_open", command === "open_category");
 		}
@@ -55,32 +55,34 @@ function joinAdmin(socket: socketio.Socket) {
 		else if(command === "reset_category") {
 			resetVotes(state.current_category);
 			// Force the clients to reset their selected vote
-			emitEvent(io, FireflyEvent.State, { current_category: state.current_category, voting_is_open: false });
+			emitEvent(io.sockets, Event.State, { current_category: state.current_category, voting_is_open: false });
 		}
 
-		emitEvent(io, FireflyEvent.State, state);
+		emitEvent(io.sockets, Event.State, state);
 		const votes = tallyVotes(state.current_category);
-		emitEvent(monitors(), FireflyEvent.Stats, { category: state.current_category, votes });
+		emitEvent(monitors(), Event.Stats, { category: state.current_category, votes });
 	});
 }
 
 
 io.on("connection", function(socket) {
-	socket.on("reconnect", () => emitEvent(socket, FireflyEvent.State, state));
+	socket.on("reconnect", () => emitEvent(socket, Event.State, state));
 	socket.on("chat_message", function (msg) { io.emit("chat_message", msg) }); // Preserve functionality of chat.html
-	socket.on("disconnect", () => emitEvent(admins(), FireflyEvent.Info, "user disconnected"));
-	onEvent(socket, FireflyEvent.Signon, (kind) => kind === "helo" ? joinAdmin(socket) : kind === "stats" ? joinMonitor(socket) : null);
-	onEvent(socket, FireflyEvent.Vote, function handleVote({uuid, category, candidate}) {
+	socket.on("disconnect", () => emitEvent(admins(), Event.Info, "user disconnected"));
+	onEvent(socket, Event.Signon, (secret) => secret === Secret.AdminSignon ? joinAdmin(socket) : secret === Secret.MonitorSignon ? joinMonitor(socket) : null);
+	onEvent(socket, Event.Vote, function handleVote({uuid, category, candidate}) {
 		if(category !== state.current_category || !state.voting_is_open) return;
 		recordVote(uuid, category, candidate);
-		emitEvent(admins(), FireflyEvent.Vote, {uuid, category, candidate});
+		emitEvent(admins(), Event.Vote, {uuid, category, candidate});
 
 		const votes = tallyVotes(category);
-		emitEvent(monitors(), FireflyEvent.Stats, { category, votes });
+		emitEvent(monitors(), Event.Stats, { category, votes });
 	});
 
-	emitEvent(socket, FireflyEvent.State, state);
+	emitEvent(socket, Event.State, state);
 });
+
+io.on
 
 
 

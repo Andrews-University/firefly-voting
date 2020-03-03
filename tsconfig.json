@@ -5,7 +5,11 @@
     "strict": true,
     "sourceMap": true,
     "outDir": "dist",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@config": ["../config"]
+    }
   },
   "include": ["src/**/*"]
 }

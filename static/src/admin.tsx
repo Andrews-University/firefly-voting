@@ -1,7 +1,8 @@
 import { socket } from './socket';
 import { clientUUID } from './uuid';
-import { FireflyEvent, onEvent, emitEvent } from './events';
+import { Event, onEvent, emitEvent, Command } from './events';
 import * as Surplus from "surplus"; Surplus;
+import { Secret } from '@config';
 
 const messagelist = document.getElementById("messages")!;
 export function log(...message: JSX.Child[]) {
@@ -12,7 +13,7 @@ export function log(...message: JSX.Child[]) {
 
 socket.on('connect', () => {
 	log(<em>connect</em>);
-	emitEvent(socket, FireflyEvent.Signon, "helo");
+	emitEvent(socket, Event.Signon, Secret.AdminSignon);
 })
 	.on('connect_error', () => log(<em>connect_error</em>))
 	.on('connect_timeout', () => log(<em>connect_timeout</em>))
@@ -22,19 +23,19 @@ socket.on('connect', () => {
 
 
 
-document.getElementById("open")!.addEventListener("click", () => emitEvent(socket, FireflyEvent.Admin, "open_category"));
-document.getElementById("close")!.addEventListener("click", () => emitEvent(socket, FireflyEvent.Admin, "close_category"));
-document.getElementById("next")!.addEventListener("click", () => emitEvent(socket, FireflyEvent.Admin, "next_category"));
-document.getElementById("prev")!.addEventListener("click", () => emitEvent(socket, FireflyEvent.Admin, "prev_category"));
-document.getElementById("reset")!.addEventListener("click", () => emitEvent(socket, FireflyEvent.Admin, "reset_category"));
+document.getElementById("open")!.addEventListener("click", () => emitEvent(socket, Event.Admin, Command.OpenCategory));
+document.getElementById("close")!.addEventListener("click", () => emitEvent(socket, Event.Admin, Command.CloseCategory));
+document.getElementById("next")!.addEventListener("click", () => emitEvent(socket, Event.Admin, Command.NextCategory));
+document.getElementById("prev")!.addEventListener("click", () => emitEvent(socket, Event.Admin, Command.PrevCategory));
+document.getElementById("reset")!.addEventListener("click", () => emitEvent(socket, Event.Admin, Command.ResetCategory));
 
-onEvent(socket, FireflyEvent.State, ({current_category, voting_is_open}) => {
+onEvent(socket, Event.State, ({current_category, voting_is_open}) => {
 	log(<b>State</b>, " = ", <b>current_category: </b>, current_category, " ", <b>voting_is_open: </b>, voting_is_open ? "true" : "false");
 });
 
-onEvent(socket, FireflyEvent.Info, (message) => log(message));
+onEvent(socket, Event.Info, (message) => log(message));
 
-onEvent(socket, FireflyEvent.Vote, ({uuid, category, candidate}) => {
+onEvent(socket, Event.Vote, ({uuid, category, candidate}) => {
 	log(<b>Vote</b>,` category ${category} for candidate #${candidate}   (`, <em>{uuid}</em>, `)`);
 });
 

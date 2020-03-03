@@ -1,14 +1,15 @@
 import { socket } from "./socket";
-import { FireflyEvent, onEvent, emitEvent } from "./events";
+import { Event, onEvent, emitEvent } from "../src/events";
 import { generate } from './uuid';
+import { Secret } from '@config';
 
 socket.on("connect", () => {
-	emitEvent(socket, FireflyEvent.Signon, "stats");
+	emitEvent(socket, Event.Signon, Secret.MonitorSignon);
 });
 
 const categories = Array.from(document.getElementsByClassName("firefly-category")) as HTMLElement[];
 
-onEvent(socket, FireflyEvent.State, ({current_category, voting_is_open}) => {
+onEvent(socket, Event.State, ({current_category, voting_is_open}) => {
 	categories.forEach((element) => {
 		console.log(element, element.dataset.id);
 		if(+(element.dataset.id || NaN) === current_category) {
@@ -20,7 +21,7 @@ onEvent(socket, FireflyEvent.State, ({current_category, voting_is_open}) => {
 	});
 });
 
-onEvent(socket, FireflyEvent.Stats, ({category, votes}) => {
+onEvent(socket, Event.Stats, ({category, votes}) => {
 	const selected = categories.find((element) => +(element.dataset.id || NaN) === category);
 	if(!selected) { return }
 
@@ -71,7 +72,7 @@ document.addEventListener("click", (ev) => {
 		return;
 	}
 
-	emitEvent(socket, FireflyEvent.Vote, { uuid: generate(), category: +category_id, candidate: +candidate_id });
+	emitEvent(socket, Event.Vote, { uuid: generate(), category: +category_id, candidate: +candidate_id });
 });
 
 export { socket };
