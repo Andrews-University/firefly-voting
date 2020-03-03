@@ -26,7 +26,7 @@ export const enum Command {
  * Map Events to their expected message type.
  */
 export type EventType = {
-	[Event.State]: { current_category: number, voting_is_open: boolean };
+	[Event.State]: { category: number, voting: boolean };
 	[Event.Stats]: { category: number, votes: number[] };
 	[Event.Info]: string;
 	[Event.Signon]: Secret.MonitorSignon | Secret.AdminSignon;
@@ -41,10 +41,10 @@ export type EventType = {
 export const ValidateEventMessage: { [E in Event]: (message: unknown) => message is EventType[E] } = {
 	[Event.State](message: any): message is EventType[Event.State] {
 		return typeof message === "object"
-			&& "current_category" in message
-			&& "voting_is_open" in message
-			&& typeof message.current_category === "number"
-			&& typeof message.voting_is_open === "boolean"
+			&& "category" in message
+			&& "voting" in message
+			&& typeof message.category === "number"
+			&& typeof message.voting === "boolean"
 	},
 
 	[Event.Stats](message: any): message is EventType[Event.Stats] {

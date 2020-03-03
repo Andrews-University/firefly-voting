@@ -70,6 +70,82 @@ perform_migration(db,
 	/* down */`
 	DROP TABLE votes;
 	`),
+
+	new Migration(
+	/* up */`
+	DELETE FROM state
+	WHERE name = 'current_category' AND value = '0';
+
+	DELETE FROM state
+	WHERE name = 'voting_is_open' AND value = 'false';
+	`,
+	/* down */`
+	INSERT INTO state
+		(name, value)
+	VALUES
+		('current_category', '0'),
+		('voting_is_open', 'false')
+	ON CONFLICT IGNORE
+	`),
+
+	new Migration(
+	/* up */`
+		CREATE TABLE state_up (
+			name    TEXT PRIMARY KEY,
+			integer INTEGER NOT NULL
+		);
+
+		INSERT INTO state_up
+		SELECT
+			CASE name
+			WHEN 'current_category' THEN 'category'
+			WHEN 'voting_is_open' THEN 'voting'
+			ELSE name
+			END,
+			CASE name
+			WHEN 'current_category' THEN value
+			WHEN 'voting_is_open' THEN
+				CASE value
+				WHEN 'true' THEN 1
+				WHEN 'false' THEN 0
+				ELSE 0
+				END
+			ELSE value
+			END
+		FROM state
+		WHERE value IS NOT NULL;
+
+		DROP TABLE state;
+
+		ALTER TABLE state_up RENAME TO state;
+	`,`
+		CREATE TABLE state_down (
+			name TEXT PRIMARY KEY,
+			value TEXT
+		);
+
+		INSERT INTO state_down
+		SELECT
+			CASE name
+			WHEN 'category' THEN 'current_category'
+			WHEN 'voting' THEN 'voting_is_open'
+			ELSE name
+			END,
+			CASE name
+			WHEN 'voting' THEN
+				CASE value
+				WHEN 0 THEN 'false'
+				ELSE 'true'
+				END
+			ELSE value
+			END
+		FROM state;
+
+		DROP TABLE state;
+
+		ALTER TABLE state_down RENAME TO state;
+	`
+	)
 );
 
 
@@ -99,10 +175,15 @@ function perform_migration(db: sqlite3.Database, ...migrations: Migration[]) {
 	const applied_migrations: { version: number, up: string, down: string, lossless: number }[]
 		= db.prepare(`SELECT version, up, down FROM user_versions ORDER BY version ASC`).all();
 
+	const fixup = db.prepare(`UPDATE user_versions SET down = ? WHERE version = ?`);
+
 	// Find the point of divergence between the set of applied and known migrations.
 	let div = 0;
 	for(; div < applied_migrations.length && div < migrations.length; div++) {
 		if(applied_migrations[div].up !== migrations[div].up) break;
+		else if(applied_migrations[div].down !== migrations[div].down) {
+			fixup.run(migrations[div].down, div);
+		}
 	}
 
 	const record = db.prepare(`INSERT INTO user_versions (version, up, down) VALUES (?, ?, ?)`);
@@ -145,7 +226,7 @@ function perform_migration(db: sqlite3.Database, ...migrations: Migration[]) {
 }
 
 const _getState = db.prepare(`
-SELECT value FROM state WHERE name = ?
+SELECT integer FROM state WHERE name = ?
 `).raw(true);
 
 /**
@@ -153,22 +234,19 @@ SELECT value FROM state WHERE name = ?
  *
  * @param name Name of the state variable.
  */
-export function getState(name: "voting_is_open"): boolean;
-export function getState(name: "current_category"): number;
-export function getState(name: string): unknown {
+export function getState(name: string): number | undefined {
 	const result = _getState.get(name);
-	if(result == null) throw new Error("missing " + name);
-	const value = result[0];
-	if(name === "current_category") return +value;
-	else if(name === "voting_is_open") return value === "true" ? true : false;
-	return value;
+	if(result == null) return undefined;
+	const integer = result[0];
+	if(typeof integer !== "number") throw new Error("invalid integer type");
+	return integer;
 }
 
 const _setState = db.prepare(`
-INSERT INTO state (name, value)
+INSERT INTO state (name, integer)
 VALUES (?, ?)
 ON CONFLICT(name) DO
-	UPDATE SET value=excluded.value
+	UPDATE SET integer=excluded.integer
 `);
 
 /**
@@ -177,12 +255,8 @@ ON CONFLICT(name) DO
  * @param name Name of the state variable
  * @param value Value of the state variable
  */
-export function setState(name: "voting_is_open", value: boolean): boolean;
-export function setState(name: "current_category", value: number): number;
-export function setState(name: string, value: unknown): unknown {
-	if(name === "voting_is_open") value ? "true" : "false";
+export function setState(name: string, value: number) {
 	_setState.run(name, `${value}`);
-	return value;
 }
 
 const _recordVote = db.prepare(`

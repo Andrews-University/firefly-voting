@@ -9,10 +9,10 @@ socket.on("connect", () => {
 
 const categories = Array.from(document.getElementsByClassName("firefly-category")) as HTMLElement[];
 
-onEvent(socket, Event.State, ({current_category, voting_is_open}) => {
+onEvent(socket, Event.State, ({category, voting}) => {
 	categories.forEach((element) => {
 		console.log(element, element.dataset.id);
-		if(+(element.dataset.id || NaN) === current_category) {
+		if(+(element.dataset.id || NaN) === category) {
 			element.classList.add("running");
 		}
 		else {

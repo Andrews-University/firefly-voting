@@ -5,9 +5,9 @@ import { emitEvent, Event, onEvent } from '../../src/events';
 const categories = Array.from(document.getElementsByClassName("firefly-category")) as HTMLElement[];
 
 
-onEvent(socket, Event.State, ({current_category, voting_is_open}) => {
+onEvent(socket, Event.State, ({category, voting}) => {
 	categories.forEach((element) => {
-		if(+(element.dataset.id || NaN) === current_category && voting_is_open) {
+		if(+(element.dataset.id || NaN) === category && voting) {
 			element.classList.add("running");
 		}
 		else {

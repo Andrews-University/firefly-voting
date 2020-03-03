@@ -29,8 +29,8 @@ document.getElementById("next")!.addEventListener("click", () => emitEvent(socke
 document.getElementById("prev")!.addEventListener("click", () => emitEvent(socket, Event.Admin, Command.PrevCategory));
 document.getElementById("reset")!.addEventListener("click", () => emitEvent(socket, Event.Admin, Command.ResetCategory));
 
-onEvent(socket, Event.State, ({current_category, voting_is_open}) => {
-	log(<b>State</b>, " = ", <b>current_category: </b>, current_category, " ", <b>voting_is_open: </b>, voting_is_open ? "true" : "false");
+onEvent(socket, Event.State, ({category, voting}) => {
+	log(<b>State</b>, " = ", <b>category: </b>, category, " ", <b>voting: </b>, voting ? "true" : "false");
 });
 
 onEvent(socket, Event.Info, (message) => log(message));

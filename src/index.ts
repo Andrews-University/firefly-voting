@@ -2,7 +2,8 @@ import cors from "cors";
 import express from "express";
 import http from "http";
 import socketio, { Socket } from "socket.io";
-import { getState, recordVote, resetVotes, setState, tallyVotes } from "./db";
+import { recordVote, resetVotes, tallyVotes } from "./db";
+import { State } from "./state";
 import { Command, emitEvent, Event, EventType, onEvent, Secret } from "./events";
 
 const { PORT = 8080 } = process.env;
@@ -35,19 +36,11 @@ const monitors = () => io.to(rooms.monitors);
 const admins = () => io.to(rooms.admins);
 
 /**
- * State of the application.
- */
-const state = {
-	voting_is_open: getState("voting_is_open"),
-	current_category: getState("current_category")
-};
-
-/**
  * Handle a connect event and attach all of the necessary listeners to the
  * client. Usually called from the default namespace.
  */
 function handleConnect(socket: Socket) {
-	emitEvent(socket, Event.State, state);
+	emitEvent(socket, Event.State, State);
 
 	onEvent(socket, Event.Signon, (msg) => handleSignon(socket, msg));
 	onEvent(socket, Event.Vote, handleVote);
@@ -58,7 +51,7 @@ function handleConnect(socket: Socket) {
  * it's up to the client not to lie about its identity.
  */
 function handleVote({uuid, category, candidate}: EventType[Event.Vote]) {
-	if(category !== state.current_category || !state.voting_is_open) return;
+	if(category !== State.category || !State.voting) return;
 	recordVote(uuid, category, candidate);
 	emitEvent(admins(), Event.Vote, {uuid, category, candidate});
 
@@ -90,26 +83,28 @@ function handleAdmin(command: EventType[Event.Admin]) {
 	switch(command) {
 		case Command.OpenCategory:
 		case Command.CloseCategory:
-			state.voting_is_open = setState("voting_is_open", command === "open_category");
-			emitEvent(io.sockets, Event.State, state);
+			State.voting = (command === "open_category");
+			emitEvent(io.sockets, Event.State, State);
 			break;
 		case Command.NextCategory:
 		case Command.PrevCategory:
-			state.voting_is_open = setState("voting_is_open", false);
+			const delta = (command === "next_category" ? 1 : -1);
+			State.voting = false;
+			State.category = Math.max(0, State.category + delta);
 
-			state.current_category = state.current_category + (command === "next_category" ? 1 : -1);
-			if(state.current_category < 0) state.current_category = 0;
-			setState("current_category", state.current_category);
-			emitEvent(io.sockets, Event.State, state);
+			emitEvent(io.sockets, Event.State, State);
 			break;
 		case Command.ResetCategory:
-			resetVotes(state.current_category);
-			// Force the clients to reset their selected vote
-			emitEvent(io.sockets, Event.State, { current_category: state.current_category, voting_is_open: false });
-			emitEvent(io.sockets, Event.State, state);
+			const { category, voting } = State;
+			resetVotes(category);
 
-			const votes = tallyVotes(state.current_category);
-			emitEvent(monitors(), Event.Stats, { category: state.current_category, votes });
+			// Force the clients to reset their selected vote
+			if(voting) {
+				emitEvent(io.sockets, Event.State, { category, voting: false });
+				emitEvent(io.sockets, Event.State, { category, voting });
+			}
+
+			emitEvent(monitors(), Event.Stats, { category, votes: [] });
 			break;
 		default:
 			info(`unknown command ${command}`);
@@ -135,9 +130,9 @@ function signonMonitor(socket: Socket) {
 	socket.join(rooms.monitors);
 	info("monitor connected");
 
-
-	const votes = tallyVotes(state.current_category);
-	emitEvent(socket, Event.Stats, { category: state.current_category, votes });
+	const { category } = State;
+	const votes = tallyVotes(category);
+	emitEvent(socket, Event.Stats, { category, votes });
 }
 
 /**
