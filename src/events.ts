@@ -1,5 +1,5 @@
-import { Event, Secret } from "@config";
-export { Event, Secret } from "@config";
+import { Event, Secret } from "../config";
+export { Event, Secret } from "../config";
 
 interface Socket {
 	on(event: string, fn: Function): void;

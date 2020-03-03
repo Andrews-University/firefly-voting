@@ -12,7 +12,6 @@
 	  "baseUrl": "./src",
 	  "paths": {
 		  "s-js": ["s-js"],
-		  "@config": ["../../config"]
 	  },
 	  "allowSyntheticDefaultImports": true,
 	  "inlineSourceMap": true,
@@ -20,5 +19,5 @@
 	  "experimentalDecorators": true,
 	  "emitDecoratorMetadata": false,
 	},
-	"include": ["src/**/*"]
+	"include": ["src/**/*", "../src/**/*"]
   }

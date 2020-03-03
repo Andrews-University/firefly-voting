@@ -6,10 +6,6 @@
     "sourceMap": true,
     "outDir": "dist",
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./src",
-    "paths": {
-      "@config": ["../config"]
-    }
   },
   "include": ["src/**/*"]
 }

@@ -1,7 +1,7 @@
 import { socket } from "./socket";
-import { Event, onEvent, emitEvent } from "../src/events";
+import { Event, onEvent, emitEvent } from '../../src/events';
 import { generate } from './uuid';
-import { Secret } from '@config';
+import { Secret } from '../../config';
 
 socket.on("connect", () => {
 	emitEvent(socket, Event.Signon, Secret.MonitorSignon);

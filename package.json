@@ -11,8 +11,8 @@
     "node": "^13.9.0"
   },
   "scripts": {
-    "start": "node --es-module-specifier-resolution=node dist/index.js",
-    "dev": "tsc && concurrently \"tsc -w\" \"nodemon --es-module-specifier-resolution=node dist/index.js\"",
+    "start": "node --es-module-specifier-resolution=node dist/src/index.js",
+    "dev": "tsc && concurrently \"tsc -w\" \"nodemon --es-module-specifier-resolution=node dist/src/index.js\"",
     "build": "tsc"
   },
   "nodemonConfig": {

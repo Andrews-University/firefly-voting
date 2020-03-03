@@ -20,9 +20,8 @@ function surplus({ include, exclude, sourceMap = false }) {
 		}
 	}
 };
-
 const plugins = () => [
-	typescript(),
+	typescript({ include: ['*.ts+(|x)', '**/*.ts+(|x)', '../src/events.ts'], exclude: ['*.d.ts', '**/*.d.ts'] }),
 	surplus({ include: [ "*.tsx", "**/*.tsx", "*.jsx", "**/*.jsx" ], sourceMap: true }),
 	alias({
 		entries: [
