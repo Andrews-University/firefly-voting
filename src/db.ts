@@ -196,7 +196,7 @@ FROM votes
 WHERE category = ?
 GROUP BY candidate
 `);
-export function tallyVotes(category: number): number[] {
+export function tallyVotes(category: number, maxCandidate?: number): number[] {
 	const candidates: { candidate: number, tally: number }[] = _tallyVotes.all(category);
 
 	let max = 0;
@@ -206,9 +206,11 @@ export function tallyVotes(category: number): number[] {
 		if(row.candidate > max) max = +row.candidate;
 	}
 
+	if(maxCandidate !== undefined) max = maxCandidate;
+
 	const votes = new Array<number>(max);
 	for(let i = 0; i <= max; i++) {
-		votes[i] = +map[i] || 0;
+		votes[i] = +(map[i] || 0);
 	}
 
 	return votes;
