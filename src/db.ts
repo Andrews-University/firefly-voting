@@ -147,6 +147,12 @@ function perform_migration(db: sqlite3.Database, ...migrations: Migration[]) {
 const _getState = db.prepare(`
 SELECT value FROM state WHERE name = ?
 `).raw(true);
+
+/**
+ * Get the value of a state variable.
+ *
+ * @param name Name of the state variable.
+ */
 export function getState(name: "voting_is_open"): boolean;
 export function getState(name: "current_category"): number;
 export function getState(name: string): unknown {
@@ -164,6 +170,13 @@ VALUES (?, ?)
 ON CONFLICT(name) DO
 	UPDATE SET value=excluded.value
 `);
+
+/**
+ * Set a state variable.
+ *
+ * @param name Name of the state variable
+ * @param value Value of the state variable
+ */
 export function setState(name: "voting_is_open", value: boolean): boolean;
 export function setState(name: "current_category", value: number): number;
 export function setState(name: string, value: unknown): unknown {
@@ -178,6 +191,15 @@ VALUES (?, ?, ?)
 ON CONFLICT(uuid, category) DO
 	UPDATE SET candidate=excluded.candidate
 `);
+
+/**
+ * Record a user's vote within a specific category for a specific candidate. If the
+ * user has already voted, their vote will be replaced.
+ *
+ * @param uuid Unique identifier used to find conflicting votes
+ * @param category Category the user has voted into.
+ * @param candidate Candidate the user has voted for.
+ */
 export function recordVote(uuid: string, category: number, candidate: number): void {
 	_recordVote.run(uuid, category, candidate);
 }
@@ -186,6 +208,12 @@ const _resetVotes = db.prepare(`
 DELETE FROM votes
 WHERE category = ?
 `);
+
+/**
+ * Reset the vote count for a given category by deleting all recorded votes.
+ *
+ * @param category Delete all votes from this category.
+ */
 export function resetVotes(category: number): void {
 	_resetVotes.run(category);
 }
@@ -196,6 +224,16 @@ FROM votes
 WHERE category = ?
 GROUP BY candidate
 `);
+
+/**
+ * Tally the number of votes for each candidate and return the sums in an array.
+ * The array index indicates the candidate.
+ *
+ * @param category Tally the votes for this category.
+ * @param maxCandidate Optionally, specify a maximum candidate number. Otherwise
+ * the highest known candidate will be used.
+ * @returns An array of number, each element corresponding to a candidate.
+ */
 export function tallyVotes(category: number, maxCandidate?: number): number[] {
 	const candidates: { candidate: number, tally: number }[] = _tallyVotes.all(category);
 
