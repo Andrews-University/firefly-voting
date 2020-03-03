@@ -6,9 +6,8 @@ import { Secret } from '../../config';
 
 const messagelist = document.getElementById("messages")!;
 export function log(...message: JSX.Child[]) {
-	console.log(message);
 	messagelist.appendChild(<li><time>{(new Date()).toISOString().replace('T', ' ')}</time>{message}</li>);
-	window.scrollTo(0,90000000);
+	scrollTo(0, document.body.scrollHeight);
 }
 
 socket.on('connect', () => {
