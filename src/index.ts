@@ -68,7 +68,6 @@ function joinAdmin(socket: socketio.Socket) {
 io.on("connection", function(socket) {
 	socket.on("reconnect", () => emitEvent(socket, Event.State, state));
 	socket.on("chat_message", function (msg) { io.emit("chat_message", msg) }); // Preserve functionality of chat.html
-	socket.on("disconnect", () => emitEvent(admins(), Event.Info, "user disconnected"));
 	onEvent(socket, Event.Signon, (secret) => secret === Secret.AdminSignon ? joinAdmin(socket) : secret === Secret.MonitorSignon ? joinMonitor(socket) : null);
 	onEvent(socket, Event.Vote, function handleVote({uuid, category, candidate}) {
 		if(category !== state.current_category || !state.voting_is_open) return;
