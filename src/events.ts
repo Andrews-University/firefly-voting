@@ -1,12 +1,19 @@
 import { Event, Secret } from "../config";
 export { Event, Secret } from "../config";
 
+/**
+ * Primitive Socket interface that should be compatible with both client and
+ * server socket.io Sockets.
+ */
 interface Socket {
 	on(event: string, fn: Function): void;
 	off(event: string, fn: Function): void;
 	emit(event: string, ...args: any[]): void;
 }
 
+/**
+ * Admin commands
+ */
 export const enum Command {
 	OpenCategory = "open_category",
 	CloseCategory = "close_category",
@@ -15,6 +22,9 @@ export const enum Command {
 	ResetCategory = "reset_category"
 }
 
+/**
+ * Map Events to their expected message type.
+ */
 export type EventType = {
 	[Event.State]: { current_category: number, voting_is_open: boolean };
 	[Event.Stats]: { category: number, votes: number[] };
@@ -24,6 +34,10 @@ export type EventType = {
 	[Event.Vote]: { uuid: string, category: number, candidate: number };
 }
 
+/**
+ * Utility functions which can validate whether or not the recieved message is
+ * malformed for the given Event.
+ */
 export const ValidateEventMessage: { [E in Event]: (message: unknown) => message is EventType[E] } = {
 	[Event.State](message: any): message is EventType[Event.State] {
 		return typeof message === "object"
@@ -78,6 +92,11 @@ export const ValidateEventMessage: { [E in Event]: (message: unknown) => message
 	}
 };
 
+
+/**
+ * A map of user-functions to type-safe, wrapped user-functions that have been
+ * attached as listeners to some event.
+ */
 const typedEventMap = new Map<(message: any) => any, (message: unknown) => any>();
 
 /**
@@ -93,6 +112,12 @@ export function onEvent<E extends Event>(socket: Socket, event: E, fn: (message:
 	socket.on(event, checker);
 }
 
+/**
+ * Emit a type-safe Event.
+ *
+ * @param socket Emit the event onto this socket.
+ * @param event Event message
+ */
 export function emitEvent<E extends Event>(socket: Socket, event: E, message: EventType[E]) {
 	socket.emit(event, message);
 }
