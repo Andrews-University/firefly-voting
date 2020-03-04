@@ -14,10 +14,11 @@ export function log(...message: JSX.Child[]) {
 	scrollTo(0, document.body.scrollHeight);
 }
 
-socket.on('connect', () => {
-	log(<em>connect</em>);
-	emitEvent(socket, Event.Signon, Secret.AdminSignon);
-})
+socket
+	.on('connect', () => {
+		log(<em>connect</em>);
+		emitEvent(socket, Event.Signon, Secret.AdminSignon);
+	})
 	.on('connect_error', () => log(<em>connect_error</em>))
 	.on('connect_timeout', () => log(<em>connect_timeout</em>))
 	.on('error', () => log(<em>error</em>))
