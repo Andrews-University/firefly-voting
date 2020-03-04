@@ -41,10 +41,10 @@ const plugins = () => [
 
 export default [
 	{
-		input: "src/index.ts",
+		input: "src/client.ts",
 		output: {
 			format: "iife",
-			file: "index.js",
+			file: "client.js",
 			name: "client",
 			sourcemap: true,
 		},
