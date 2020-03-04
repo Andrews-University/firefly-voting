@@ -83,12 +83,12 @@ function handleAdmin(command: EventType[Event.Admin]) {
 	switch(command) {
 		case Command.OpenCategory:
 		case Command.CloseCategory:
-			State.voting = (command === "open_category");
+			State.voting = (command === Command.OpenCategory);
 			emitEvent(io.sockets, Event.State, State);
 			break;
 		case Command.NextCategory:
 		case Command.PrevCategory:
-			const delta = (command === "next_category" ? 1 : -1);
+			const delta = (command === Command.NextCategory ? 1 : -1);
 			State.voting = false;
 			State.category = Math.max(0, State.category + delta);
 
