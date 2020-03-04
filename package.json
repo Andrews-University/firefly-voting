@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "node --es-module-specifier-resolution=node dist/src/index.js",
-    "dev": "tsc && concurrently \"tsc -w\" \"nodemon --es-module-specifier-resolution=node dist/src/index.js\"",
+    "dev": "tsc && concurrently -k \"tsc -w\" \"nodemon --es-module-specifier-resolution=node dist/src/index.js\"",
     "build": "tsc"
   },
   "nodemonConfig": {
