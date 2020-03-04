@@ -10,7 +10,10 @@ const { PORT = 8080 } = process.env;
 
 const router = express();
 router.use(cors());
-router.use("/firefly", express.static("static"));
+router.use("/firefly", express.static("static", {
+	extensions: [ "xhtml", "html" ],
+	index: [ "index.xhtml", "index.html" ],
+}));
 
 const server = http.createServer(router);
 

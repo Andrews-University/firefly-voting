@@ -6,8 +6,12 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"rollup -c rollup.config.js -w\" \"pug -w -P index.pug monitor.pug\"",
-    "build": "rollup -c rollup.config.js; pug -P index.pug"
+		"dev": "concurrently \"yon run dev-js -w\" \"yon run dev-xhtml\"",
+		"dev-js": "rollup -w -c rollup.config.js",
+		"dev-xhtml": "pug -w -O '{ pretty: \"\\t\", filters: { xhtml: () => `<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html>` } }' -E xhtml index.pug monitor.pug",
+    "build": "yon run build-js; yon run build-xhtml",
+    "build-js": "rollup -c rollup.config.js",
+    "build-xhtml": "pug -O '{ pretty: \"\\t\", filters: { xhtml: () => `<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html>` } }' -E xhtml index.pug monitor.pug"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^3.0.1",
@@ -25,6 +29,7 @@
     "surplus": "0.5.x",
     "surplus-mixin-data": "0.5.x",
     "tslib": "*",
-    "typescript": "^3.8.2"
-  }
+    "typescript": "^3.8.2",
+    "yarn-or-npm": "^3.0.1"
+    }
 }
