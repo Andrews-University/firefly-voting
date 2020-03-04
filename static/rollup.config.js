@@ -44,7 +44,7 @@ export default [
 		input: "src/client.ts",
 		output: {
 			format: "iife",
-			file: "client.js",
+			file: "dist/client.js",
 			name: "client",
 			sourcemap: true,
 		},
@@ -54,7 +54,7 @@ export default [
 		input: "src/chat.ts",
 		output: {
 			format: "iife",
-			file: "chat.js",
+			file: "dist/chat.js",
 			name: "chat",
 			sourcemap: true,
 		},
@@ -64,7 +64,7 @@ export default [
 		input: "src/admin.tsx",
 		output: {
 			format: "iife",
-			file: "admin.js",
+			file: "dist/admin.js",
 			name: "admin",
 			sourcemap: true,
 		},
@@ -74,7 +74,7 @@ export default [
 		input: "src/monitor.tsx",
 		output: {
 			format: "iife",
-			file: "monitor.js",
+			file: "dist/monitor.js",
 			name: "monitor",
 			sourcemap: true,
 		},
