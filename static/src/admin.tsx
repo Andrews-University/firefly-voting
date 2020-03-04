@@ -3,10 +3,14 @@ import { clientUUID } from './uuid';
 import { Event, onEvent, emitEvent, Command } from '../../src/events';
 import * as Surplus from "surplus"; Surplus;
 import { Secret } from '../../config';
+import { S } from 'surplus';
 
 const messagelist = document.getElementById("messages")!;
 export function log(...message: JSX.Child[]) {
-	messagelist.appendChild(<li><time>{(new Date()).toISOString().replace('T', ' ')}</time>{message}</li>);
+	S.root((disposer) => {
+		messagelist.appendChild(<li><time>{(new Date()).toISOString().replace('T', ' ')}</time>{message}</li>);
+		disposer();
+	})
 	scrollTo(0, document.body.scrollHeight);
 }
 
