@@ -4,6 +4,7 @@ import { Event, onEvent, emitEvent, Command } from '../../src/events';
 import * as Surplus from "surplus"; Surplus;
 import { Secret } from '../../config';
 import { S } from 'surplus';
+export { socket };
 
 const messagelist = document.getElementById("messages")!;
 export function log(...message: JSX.Child[]) {

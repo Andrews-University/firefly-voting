@@ -2,6 +2,7 @@ import { socket } from "./socket";
 import { Event, onEvent, emitEvent } from '../../src/events';
 import { generate } from './uuid';
 import { Secret } from '../../config';
+export { socket };
 
 socket.on("connect", () => {
 	emitEvent(socket, Event.Signon, Secret.MonitorSignon);
@@ -74,8 +75,6 @@ document.addEventListener("click", (ev) => {
 
 	emitEvent(socket, Event.Vote, { uuid: generate(), category: +category_id, candidate: +candidate_id });
 });
-
-export { socket };
 
 
 

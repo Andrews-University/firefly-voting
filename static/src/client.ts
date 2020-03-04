@@ -1,6 +1,7 @@
 import {socket} from './socket';
 import {clientUUID} from "./uuid";
 import { emitEvent, Event, onEvent } from '../../src/events';
+export { socket };
 
 const categories = Array.from(document.getElementsByClassName("firefly-category")) as HTMLElement[];
 
