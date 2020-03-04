@@ -20,6 +20,7 @@
     "@rollup/plugin-strip": "^1.2.1",
     "@rollup/plugin-typescript": "^3.0.0",
     "@types/socket.io-client": "^1.4.32",
+    "@types/url-parse": "^1.4.3",
     "concurrently": "^5.1.0",
     "pug": "^2.0.4",
     "pug-cli": "^1.0.0-alpha6",
@@ -30,6 +31,7 @@
     "surplus-mixin-data": "0.5.x",
     "tslib": "*",
     "typescript": "^3.8.2",
+    "url-parse": "^1.4.7",
     "yarn-or-npm": "^3.0.1"
-    }
+  }
 }

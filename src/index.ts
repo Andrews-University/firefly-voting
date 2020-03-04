@@ -9,22 +9,23 @@ import path from 'path';
 
 const __dirname = path.resolve();
 
-const { PORT = 8080 } = process.env;
+const { PORT = 8080, BASE_PATH = "" } = process.env;
 
 const router = express();
+
 router.use(cors());
 const staticOpts = {
 	extensions: [ "xhtml", "html" ],
 	index: [ "index.xhtml", "index.html" ],
 };
 router.get('/favicon.ico', (req, res) => res.redirect("img/favicon.png"));
-router.use("/", express.static(__dirname + "/static/dist", staticOpts));
-router.use("/css", express.static(__dirname + "/static/css", staticOpts));
-router.use("/img", express.static(__dirname + "/static/img", staticOpts));
+router.use(`${BASE_PATH}/`, express.static(`${__dirname}/static/dist`, staticOpts));
+router.use(`${BASE_PATH}/css`, express.static(`${__dirname}/static/css`, staticOpts));
+router.use(`${BASE_PATH}/img`, express.static(`${__dirname}/static/img`, staticOpts));
 
 const server = http.createServer(router);
 
-const io = socketio(server, { serveClient: false });
+const io = socketio(server, { path: `${BASE_PATH}/socket.io`, serveClient: false });
 io.sockets.on("connect", handleConnect);
 
 server.listen(PORT, () => {
