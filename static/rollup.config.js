@@ -51,16 +51,6 @@ export default [
 		plugins: plugins()
 	},
 	{
-		input: "src/chat.ts",
-		output: {
-			format: "iife",
-			file: "dist/chat.js",
-			name: "chat",
-			sourcemap: true,
-		},
-		plugins: plugins()
-	},
-	{
 		input: "src/admin.tsx",
 		output: {
 			format: "iife",
