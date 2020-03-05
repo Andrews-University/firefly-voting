@@ -27,7 +27,7 @@ export const enum Command {
  */
 export type EventType = {
 	[Event.State]: { category: number, voting: boolean };
-	[Event.Stats]: { category: number, votes: number[] };
+	[Event.Stats]: { category: number, votes: (number | null | undefined)[] };
 	[Event.Info]: string;
 	[Event.Signon]: Secret.MonitorSignon | Secret.AdminSignon;
 	[Event.Admin]: Command;
@@ -55,7 +55,7 @@ export const ValidateEventMessage: { [E in Event]: (message: unknown) => message
 			|| !Array.isArray(message.votes)
 			) return false;
 		for(let tally of message.votes) {
-			if(typeof tally !== "number") return false;
+			if(tally != null && typeof tally !== "number") return false;
 		}
 		return true;
 	},

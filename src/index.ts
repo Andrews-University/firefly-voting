@@ -2,8 +2,7 @@ import cors from "cors";
 import express from "express";
 import http from "http";
 import socketio, { Socket } from "socket.io";
-import { recordVote, resetVotes, tallyVotes } from "./db";
-import { State } from "./state";
+import { State, Stats } from "./state";
 import { Command, emitEvent, Event, EventType, onEvent, Secret } from "./events";
 import path from 'path';
 
@@ -28,10 +27,6 @@ const server = http.createServer(router);
 const io = socketio(server, { path: `${BASE_PATH}/socket.io`, serveClient: false });
 io.sockets.on("connect", handleConnect);
 
-server.listen(PORT, () => {
-	console.log(`Server is running http://localhost:${PORT}...`);
-});
-
 /**
  * List of rooms that we're using
  */
@@ -45,6 +40,12 @@ const rooms = {
  */
 const monitors = () => io.to(rooms.monitors);
 const admins = () => io.to(rooms.admins);
+
+const throttledUpdateMonitorTally = throttle(100, updateMonitorTally);
+
+server.listen(PORT, () => {
+	console.log(`Server is running http://localhost:${PORT}...`);
+});
 
 /**
  * Handle a connect event and attach all of the necessary listeners to the
@@ -63,10 +64,15 @@ function handleConnect(socket: Socket) {
  */
 function handleVote({uuid, category, candidate}: EventType[Event.Vote]) {
 	if(category !== State.category || !State.voting) return;
-	recordVote(uuid, category, candidate);
+	Stats.get(category).vote(uuid, candidate);
 	emitEvent(admins(), Event.Vote, {uuid, category, candidate});
 
-	const votes = tallyVotes(category);
+	throttledUpdateMonitorTally();
+}
+
+function updateMonitorTally() {
+	const { category } = State;
+	const votes = Stats.get(category);
 	emitEvent(monitors(), Event.Stats, { category, votes });
 }
 
@@ -107,7 +113,8 @@ function handleAdmin(command: EventType[Event.Admin]) {
 			break;
 		case Command.ResetCategory:
 			const { category, voting } = State;
-			resetVotes(category);
+			const votes = Stats.get(category);
+			votes.deleteAllVotes();
 
 			// Force the clients to reset their selected vote
 			if(voting) {
@@ -115,7 +122,7 @@ function handleAdmin(command: EventType[Event.Admin]) {
 				emitEvent(io.sockets, Event.State, { category, voting });
 			}
 
-			emitEvent(monitors(), Event.Stats, { category, votes: [] });
+			emitEvent(monitors(), Event.Stats, { category, votes: votes });
 			break;
 		default:
 			info(`unknown command ${command}`);
@@ -142,7 +149,7 @@ function signonMonitor(socket: Socket) {
 	info("monitor connected");
 
 	const { category } = State;
-	const votes = tallyVotes(category);
+	const votes = Stats.get(category);
 	emitEvent(socket, Event.Stats, { category, votes });
 }
 
@@ -153,3 +160,35 @@ function info(message: string) {
 	emitEvent(admins(), Event.Info, message);
 }
 
+/**
+ * Throttle calls to `fn` to at most one per every `onePerMS` milliseconds.
+ */
+function throttle(onePerMS: number, fn: () => any): () => void {
+	let timer: object | undefined = void 0;
+	let pending = false;
+
+	return thunk;
+
+	function thunk() {
+		if(timer !== void 0) {
+			pending = true;
+		}
+		else {
+			pending = false;
+			timer = setTimeout(timeout, onePerMS);
+			fn();
+		}
+
+	};
+
+	function timeout() {
+		if(pending === true) {
+			pending = false;
+			timer = setTimeout(timeout, onePerMS);
+			fn();
+		}
+		else {
+			timer = void 0;
+		}
+	}
+}

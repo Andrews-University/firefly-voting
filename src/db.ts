@@ -292,38 +292,23 @@ export function resetVotes(category: number): void {
 	_resetVotes.run(category);
 }
 
-const _tallyVotes = db.prepare(`
-SELECT candidate, COUNT(uuid) AS tally
+const _getVotes = db.prepare(`
+SELECT uuid, candidate
 FROM votes
 WHERE category = ?
-GROUP BY candidate
-`);
+`).raw(true);
 
-/**
- * Tally the number of votes for each candidate and return the sums in an array.
- * The array index indicates the candidate.
- *
- * @param category Tally the votes for this category.
- * @param maxCandidate Optionally, specify a maximum candidate number. Otherwise
- * the highest known candidate will be used.
- * @returns An array of number, each element corresponding to a candidate.
- */
-export function tallyVotes(category: number, maxCandidate?: number): number[] {
-	const candidates: { candidate: number, tally: number }[] = _tallyVotes.all(category);
+export function getVotes(category: number): { votes: { [key: string]: number | undefined }, tally: (number | null | undefined)[] } {
+	const votes: { [key: string]: number | undefined } = {};
+	const tally: number[] = [];
 
-	let max = 0;
-	const map: Record<number, number> = {};
-	for(const row of candidates) {
-		map[row.candidate] = row.tally;
-		if(row.candidate > max) max = +row.candidate;
+	for(const [uuid, candidate] of _getVotes.iterate(category)) {
+		votes[uuid] = candidate;
+
+		const sum = tally[candidate];
+		if(sum == null) tally[candidate] = 1;
+		else tally[candidate] = sum + 1;
 	}
 
-	if(maxCandidate !== undefined) max = maxCandidate;
-
-	const votes = new Array<number>(max);
-	for(let i = 0; i <= max; i++) {
-		votes[i] = +(map[i] || 0);
-	}
-
-	return votes;
+	return { votes, tally };
 }
