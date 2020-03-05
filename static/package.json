@@ -22,7 +22,6 @@
     "@types/socket.io-client": "^1.4.32",
     "@types/url-parse": "^1.4.3",
     "concurrently": "^5.1.0",
-    "pug": "^2.0.4",
     "pug-cli": "^1.0.0-alpha6",
     "rollup": "^1.31.1",
     "s-js": "^0.4.9",
@@ -33,5 +32,8 @@
     "typescript": "^3.8.2",
     "url-parse": "^1.4.7",
     "yarn-or-npm": "^3.0.1"
+  },
+  "resolutions": {
+    "pug-cli/**/constantinople": "^4.0.1"
   }
 }
