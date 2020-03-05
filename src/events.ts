@@ -106,8 +106,8 @@ const typedEventMap = new Map<(message: any) => any, (message: unknown) => any>(
  * Add an event listener to the given socket. Malformed messages are discarded
  * entirely, no excess property check is performed on correctly shaped messages.
  */
-export function onEvent<E extends Event>(socket: Socket, event: E, fn: (message: EventType[E]) => any) {
-	const checker = (message: unknown) => {
+export function onEvent<E extends Event>(socket: Socket, event: E, fn: (message: EventType[E]) => any): void {
+	const checker = (message: unknown): unknown => {
 		if(ValidateEventMessage[event](message)) return fn(message as EventType[E]);
 		console.warn("Discarding malformed message", event, message);
 	};
@@ -121,6 +121,6 @@ export function onEvent<E extends Event>(socket: Socket, event: E, fn: (message:
  * @param socket Emit the event onto this socket.
  * @param event Event message
  */
-export function emitEvent<E extends Event>(socket: Socket, event: E, message: EventType[E]) {
+export function emitEvent<E extends Event>(socket: Socket, event: E, message: EventType[E]): void {
 	socket.emit(event, message);
 }

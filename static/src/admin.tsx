@@ -33,7 +33,7 @@ onEvent(socket, Event.Vote, ({uuid, category, candidate}) => {
 	log(<b>Vote</b>,` category ${category} for candidate #${candidate}   (`, <em>{uuid}</em>, `)`);
 });
 
-export function log(...message: JSX.Child[]) {
+export function log(...message: JSX.Child[]): void {
 	S.root((disposer) => {
 		messagelist.appendChild(<li><time>{(new Date()).toISOString().replace("T", " ")}</time>{message}</li>);
 		disposer();

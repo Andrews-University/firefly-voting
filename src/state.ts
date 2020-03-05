@@ -43,7 +43,7 @@ export const State = {
  * View of the recorded stats.
  */
 export const Stats = new class Stats extends Map<number, CategoryStats> {
-	get(key: number) {
+	get(key: number): CategoryStats {
 		let value = super.get(key);
 		if(value === void 0) {
 			value = new CategoryStats(key);
@@ -64,7 +64,7 @@ class CategoryStats extends Array<number | null | undefined> {
 	}
 
 	/** Record a vote */
-	vote(uuid: string, candidate: number) {
+	vote(uuid: string, candidate: number): void {
 		recordVote(uuid, this.category, candidate);
 
 		// If the user had previously voted, rollback their
@@ -91,14 +91,14 @@ class CategoryStats extends Array<number | null | undefined> {
 	}
 
 	/** Refresh the stats by reloading all data from the database */
-	refresh() {
+	refresh(): void {
 		const { votes, tally } = getVotes(this.category);
 		this.votes = votes;
 		Object.assign(this, tally, { length: tally.length });
 	}
 
 	/** Delete all votes from the category */
-	deleteAllVotes() {
+	deleteAllVotes(): void {
 		this.length = 0;
 		resetVotes(this.category);
 		this.refresh();

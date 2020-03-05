@@ -38,8 +38,8 @@ const rooms = {
 /*
  * Accessors for specific rooms. Must be generated every time they are accessed.
  */
-const monitors = () => io.to(rooms.monitors);
-const admins = () => io.to(rooms.admins);
+const monitors = (): socketio.Namespace => io.to(rooms.monitors);
+const admins = (): socketio.Namespace => io.to(rooms.admins);
 
 const throttledUpdateMonitorTally = throttle(100, updateMonitorTally);
 
@@ -51,7 +51,7 @@ server.listen(PORT, () => {
  * Handle a connect event and attach all of the necessary listeners to the
  * client. Usually called from the default namespace.
  */
-function handleConnect(socket: Socket) {
+function handleConnect(socket: Socket): void {
 	emitEvent(socket, Event.State, State);
 
 	onEvent(socket, Event.Signon, (msg) => handleSignon(socket, msg));
@@ -62,7 +62,7 @@ function handleConnect(socket: Socket) {
  * Handle a Vote event emitted by a client. There's no authentication, so
  * it's up to the client not to lie about its identity.
  */
-function handleVote({uuid, category, candidate}: EventType[Event.Vote]) {
+function handleVote({uuid, category, candidate}: EventType[Event.Vote]): void {
 	if(category !== State.category || !State.voting) return;
 	Stats.get(category).vote(uuid, candidate);
 	emitEvent(admins(), Event.Vote, {uuid, category, candidate});
@@ -70,7 +70,7 @@ function handleVote({uuid, category, candidate}: EventType[Event.Vote]) {
 	throttledUpdateMonitorTally();
 }
 
-function updateMonitorTally() {
+function updateMonitorTally(): void {
 	const { category } = State;
 	const votes = Stats.get(category);
 	emitEvent(monitors(), Event.Stats, { category, votes });
@@ -80,7 +80,7 @@ function updateMonitorTally() {
  * Handle a Signon event emitted by a client attempting to elevate its
  * privileges. The message is a shared secret.
  */
-function handleSignon(socket: Socket, secret: EventType[Event.Signon]) {
+function handleSignon(socket: Socket, secret: EventType[Event.Signon]): void {
 	if(secret === Secret.AdminSignon) {
 		signonAdmin(socket);
 	}
@@ -96,7 +96,7 @@ function handleSignon(socket: Socket, secret: EventType[Event.Signon]) {
  * Handle an Admin event emitted by a client. This should only be listened to
  * when emitted by clients in `rooms.admins`.
  */
-function handleAdmin(command: EventType[Event.Admin]) {
+function handleAdmin(command: EventType[Event.Admin]): void {
 	switch(command) {
 		case Command.OpenCategory:
 		case Command.CloseCategory:
@@ -133,7 +133,7 @@ function handleAdmin(command: EventType[Event.Admin]) {
  * Signon an admin client, joining it to the correct rooms and attaching
  * necessary listeners.
  */
-function signonAdmin(socket: Socket) {
+function signonAdmin(socket: Socket): void {
 	socket.join(rooms.admins);
 	info("admin connected");
 
@@ -144,7 +144,7 @@ function signonAdmin(socket: Socket) {
  * Signon a monitor client, joining it to the correct rooms and attaching
  * necessary listeners.
  */
-function signonMonitor(socket: Socket) {
+function signonMonitor(socket: Socket): void {
 	socket.join(rooms.monitors);
 	info("monitor connected");
 
@@ -156,7 +156,7 @@ function signonMonitor(socket: Socket) {
 /**
  * Send an Event.Info to all attached admins.
  */
-function info(message: string) {
+function info(message: string): void {
 	emitEvent(admins(), Event.Info, message);
 }
 
@@ -169,7 +169,7 @@ function throttle(onePerMS: number, fn: () => any): () => void {
 
 	return thunk;
 
-	function thunk() {
+	function thunk(): void {
 		if(timer !== void 0) {
 			pending = true;
 		}
@@ -179,9 +179,9 @@ function throttle(onePerMS: number, fn: () => any): () => void {
 			fn();
 		}
 
-	};
+	}
 
-	function timeout() {
+	function timeout(): void {
 		if(pending === true) {
 			pending = false;
 			timer = setTimeout(timeout, onePerMS);

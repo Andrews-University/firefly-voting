@@ -9,7 +9,7 @@ class Migration {
 		this.down = Migration.unindent(down);
 	}
 
-	static unindent(multiline: string) {
+	static unindent(multiline: string): string {
 		const ws = (/^(?:\s*\n)?([^\S\n]+)/.exec(multiline) || [])[1];
 		if(!ws) return multiline;
 		return multiline
@@ -167,7 +167,7 @@ perform_migration(db,
  * or in an incompatible shape.
  *
  */
-function perform_migration(db: sqlite3.Database, ...migrations: Migration[]) {
+function perform_migration(db: sqlite3.Database, ...migrations: Migration[]): void {
 	db.exec(`
 	CREATE TABLE IF NOT EXISTS user_versions (
 		version  INTEGER NOT NULL PRIMARY KEY,
@@ -259,7 +259,7 @@ ON CONFLICT(name) DO
  * @param name Name of the state variable
  * @param value Value of the state variable
  */
-export function setState(name: string, value: number) {
+export function setState(name: string, value: number): void {
 	_setState.run(name, `${value}`);
 }
 
