@@ -39,22 +39,24 @@ export type EventType = {
  * malformed for the given Event.
  */
 export const ValidateEventMessage: { [E in Event]: (message: unknown) => message is EventType[E] } = {
-	[Event.State](message: any): message is EventType[Event.State] {
+	[Event.State](message: unknown): message is EventType[Event.State] {
 		return typeof message === "object"
+			&& message !== null
 			&& "category" in message
 			&& "voting" in message
-			&& typeof message.category === "number"
-			&& typeof message.voting === "boolean"
+			&& typeof (message as EventType[Event.State]).category === "number"
+			&& typeof (message as EventType[Event.State]).voting === "boolean";
 	},
 
-	[Event.Stats](message: any): message is EventType[Event.Stats] {
+	[Event.Stats](message: unknown): message is EventType[Event.Stats] {
 		if(typeof message !== "object"
+			|| message === null
 			|| !("category" in message)
 			|| !("votes" in message)
-			|| typeof message.category !== "number"
-			|| !Array.isArray(message.votes)
-			) return false;
-		for(let tally of message.votes) {
+			|| typeof (message as EventType[Event.Stats]).category !== "number"
+			|| !Array.isArray((message as EventType[Event.Stats]).votes)
+		) return false;
+		for(const tally of (message as EventType[Event.Stats]).votes) {
 			if(tally != null && typeof tally !== "number") return false;
 		}
 		return true;
@@ -68,7 +70,7 @@ export const ValidateEventMessage: { [E in Event]: (message: unknown) => message
 		return typeof message === "string"
 			&& (message === Secret.AdminSignon
 				|| message === Secret.MonitorSignon
-			)
+			);
 	},
 
 	[Event.Admin](message: unknown): message is EventType[Event.Admin] {
@@ -78,17 +80,18 @@ export const ValidateEventMessage: { [E in Event]: (message: unknown) => message
 				|| message === Command.NextCategory
 				|| message === Command.PrevCategory
 				|| message === Command.ResetCategory
-			)
+			);
 	},
 
-	[Event.Vote](message: any): message is EventType[Event.Vote] {
+	[Event.Vote](message: unknown): message is EventType[Event.Vote] {
 		return typeof message === "object"
+			&& message !== null
 			&& "uuid" in message
 			&& "category" in message
 			&& "candidate" in message
-			&& typeof message.uuid === "string"
-			&& typeof message.category === "number"
-			&& typeof message.candidate === "number"
+			&& typeof (message as EventType[Event.Vote]).uuid === "string"
+			&& typeof (message as EventType[Event.Vote]).category === "number"
+			&& typeof (message as EventType[Event.Vote]).candidate === "number";
 	}
 };
 
