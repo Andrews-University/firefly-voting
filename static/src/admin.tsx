@@ -37,7 +37,7 @@ export function log(...message: JSX.Child[]): void {
 	S.root((disposer) => {
 		messagelist.appendChild(<li><time>{(new Date()).toISOString().replace("T", " ")}</time>{message}</li>);
 		disposer();
-	})
+	});
 	scrollTo(0, document.body.scrollHeight);
 }
 

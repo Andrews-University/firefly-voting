@@ -23,7 +23,7 @@ onEvent(socket, Event.State, ({category, voting}) => {
 
 onEvent(socket, Event.Stats, ({category, votes}) => {
 	const selected = categories.find((element) => +(element.dataset.id || NaN) === category);
-	if(!selected) { return }
+	if(!selected) { return; }
 
 	const tiles = Array.from(selected.getElementsByClassName("firefly-tile")) as HTMLElement[];
 	tiles.forEach((tile, i) => {

@@ -22,6 +22,6 @@ export function getDatasetNumber(element: HTMLElement, attribute: string): numbe
 	const value = element.dataset[attribute];
 	if(typeof value !== "string") return null;
 	const number = +value;
-	if(number !== number) return null // filter out NaNs
+	if(number !== number) return null; // filter out NaNs
 	return number;
 }

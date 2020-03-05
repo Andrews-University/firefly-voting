@@ -11,7 +11,7 @@ export const DefaultState = {
  * Internal cache of the database state. We only persist to SQLite so that we
  * can seamlessly restore on restart.
  */
-const cached_state: typeof DefaultState = {
+const cache: typeof DefaultState = {
 	category: +(getState("category") ?? DefaultState.category),
 	voting: !!(getState("voting") ?? DefaultState.voting),
 };
@@ -22,20 +22,21 @@ const cached_state: typeof DefaultState = {
  */
 export const State = {
 	get category(): number {
-		return cached_state.category;
+		return cache.category;
 	},
 	set category(value: number) {
 		const pickedValue = value || DefaultState.category;
-		if(pickedValue === cached_state.category) return;
-		setState("category", cached_state.category = pickedValue);
+		if(pickedValue === cache.category) return;
+		setState("category", cache.category = pickedValue);
 	},
 	get voting(): boolean {
-		return cached_state.voting;
+		return cache.voting;
 	},
 	set voting(value: boolean) {
 		const pickedValue = value ?? DefaultState.voting;
-		if(pickedValue === cached_state.voting) return;
-		setState("voting", (cached_state.voting = pickedValue) ? 1 : 0);
+		if(pickedValue === cache.voting) return;
+		cache.voting = pickedValue;
+		setState("voting", pickedValue ? 1 : 0);
 	},
 } as const;
 
@@ -59,7 +60,7 @@ export const Stats = new class Stats extends Map<number, CategoryStats> {
 class CategoryStats extends Array<number | null | undefined> {
 	votes!: { [key: string]: number | undefined };
 	constructor(public category: number) {
-		super()
+		super();
 		this.refresh();
 	}
 

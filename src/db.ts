@@ -27,7 +27,7 @@ class Migration {
  * during development. If you need to make changes to the database
  * sturcture, write a *NEW* migration.
  */
-perform_migration(db,
+performMigration(db,
 	new Migration(
 		/* up */`
 		CREATE TABLE state (
@@ -167,7 +167,7 @@ perform_migration(db,
  * or in an incompatible shape.
  *
  */
-function perform_migration(db: sqlite3.Database, ...migrations: Migration[]): void {
+function performMigration(db: sqlite3.Database, ...migrations: Migration[]): void {
 	db.exec(`
 	CREATE TABLE IF NOT EXISTS user_versions (
 		version  INTEGER NOT NULL PRIMARY KEY,
@@ -176,16 +176,16 @@ function perform_migration(db: sqlite3.Database, ...migrations: Migration[]): vo
 	);
 	`);
 
-	const applied_migrations: { version: number, up: string, down: string, lossless: number }[]
+	const appliedMigrations: { version: number; up: string; down: string; lossless: number }[]
 		= db.prepare(`SELECT version, up, down FROM user_versions ORDER BY version ASC`).all();
 
 	const fixup = db.prepare(`UPDATE user_versions SET down = ? WHERE version = ?`);
 
 	// Find the point of divergence between the set of applied and known migrations.
 	let div = 0;
-	for(; div < applied_migrations.length && div < migrations.length; div++) {
-		if(applied_migrations[div].up !== migrations[div].up) break;
-		else if(applied_migrations[div].down !== migrations[div].down) {
+	for(; div < appliedMigrations.length && div < migrations.length; div++) {
+		if(appliedMigrations[div].up !== migrations[div].up) break;
+		else if(appliedMigrations[div].down !== migrations[div].down) {
 			fixup.run(migrations[div].down, div);
 		}
 	}
@@ -194,14 +194,14 @@ function perform_migration(db: sqlite3.Database, ...migrations: Migration[]): vo
 	const unrecord = db.prepare(`DELETE FROM user_versions WHERE version = ?`);
 
 	// If the known migrations diverge from the applied migrations
-	if(div < applied_migrations.length) {
+	if(div < appliedMigrations.length) {
 		// Rollback the applied migrations
-		for(let i = applied_migrations.length - 1; div <= i; i--) {
-			console.warn(`Rolling back migration ${i}:\n${applied_migrations[i].down}`);
+		for(let i = appliedMigrations.length - 1; div <= i; i--) {
+			console.warn(`Rolling back migration ${i}:\n${appliedMigrations[i].down}`);
 			db.exec("BEGIN");
 			try {
-				db.exec(applied_migrations[i].down);
-				unrecord.run(applied_migrations[i].version);
+				db.exec(appliedMigrations[i].down);
+				unrecord.run(appliedMigrations[i].version);
 				db.pragma(`user_version = ${i}`);
 				db.exec("COMMIT");
 			}

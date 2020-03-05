@@ -111,7 +111,7 @@ export function onEvent<E extends Event>(socket: Socket, event: E, fn: (message:
 		if(ValidateEventMessage[event](message)) return fn(message as EventType[E]);
 		console.warn("Discarding malformed message", event, message);
 	};
-	typedEventMap.set(fn, checker)
+	typedEventMap.set(fn, checker);
 	socket.on(event, checker);
 }
 
