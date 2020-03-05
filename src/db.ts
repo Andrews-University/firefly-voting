@@ -29,67 +29,70 @@ class Migration {
  */
 perform_migration(db,
 	new Migration(
-	/* up */`
-	CREATE TABLE state (
-		name TEXT PRIMARY KEY,
-		value TEXT
-	);
+		/* up */`
+		CREATE TABLE state (
+			name TEXT PRIMARY KEY,
+			value TEXT
+		);
 
-	INSERT INTO state
-		(name, value)
-	VALUES
-		('current_category', '0');
-	`,
-	/* down */`
-	DROP TABLE state;
-	`),
+		INSERT INTO state
+			(name, value)
+		VALUES
+			('current_category', '0');
+		`,
+		/* down */`
+		DROP TABLE state;
+		`
+	),
+
+	new Migration(
+		/* up */`
+		INSERT INTO state
+			(name, value)
+		VALUES
+			('voting_is_open', 'false');
+		`,
+		/* down */`
+		DELETE FROM state
+		WHERE name = 'voting_is_open';
+		`
+	),
 
 
 	new Migration(
-	/* up */`
-	INSERT INTO state
-		(name, value)
-	VALUES
-		('voting_is_open', 'false');
-	`,
-	/* down */`
-	DELETE FROM state
-	WHERE name = 'voting_is_open';
-	`),
-
-
-	new Migration(
-	/* up */`
-	CREATE TABLE votes (
-		uuid TEXT,
-		category NUMBER,
-		candidate NUMBER,
-		PRIMARY KEY (uuid, category)
-	);
-	`,
-	/* down */`
-	DROP TABLE votes;
-	`),
+		/* up */`
+		CREATE TABLE votes (
+			uuid TEXT,
+			category NUMBER,
+			candidate NUMBER,
+			PRIMARY KEY (uuid, category)
+		);
+		`,
+		/* down */`
+		DROP TABLE votes;
+		`
+	),
 
 	new Migration(
-	/* up */`
-	DELETE FROM state
-	WHERE name = 'current_category' AND value = '0';
+		/* up */`
+		DELETE FROM state
+		WHERE name = 'current_category' AND value = '0';
 
-	DELETE FROM state
-	WHERE name = 'voting_is_open' AND value = 'false';
-	`,
-	/* down */`
-	INSERT INTO state
-		(name, value)
-	VALUES
-		('current_category', '0'),
-		('voting_is_open', 'false')
-	ON CONFLICT IGNORE
-	`),
+		DELETE FROM state
+		WHERE name = 'voting_is_open' AND value = 'false';
+		`,
+		/* down */`
+		INSERT INTO state
+			(name, value)
+		VALUES
+			('current_category', '0'),
+			('voting_is_open', 'false')
+		ON CONFLICT IGNORE
+		`
+	),
 
 	new Migration(
-	/* up */`
+		/* up */`
 		CREATE TABLE state_up (
 			name    TEXT PRIMARY KEY,
 			integer INTEGER NOT NULL
@@ -118,7 +121,8 @@ perform_migration(db,
 		DROP TABLE state;
 
 		ALTER TABLE state_up RENAME TO state;
-	`,`
+		`,
+		/* down */`
 		CREATE TABLE state_down (
 			name TEXT PRIMARY KEY,
 			value TEXT
@@ -144,8 +148,8 @@ perform_migration(db,
 		DROP TABLE state;
 
 		ALTER TABLE state_down RENAME TO state;
-	`
-	)
+		`
+	),
 );
 
 
