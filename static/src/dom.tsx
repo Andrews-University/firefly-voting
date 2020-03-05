@@ -17,6 +17,7 @@ export function closestElementByClassName(node: Node, className: string): HTMLEl
 	return target;
 }
 
+/** Get a numeric from an element's dataset, null if non-numeric */
 export function getDatasetNumber(element: HTMLElement, attribute: string): number | null {
 	const value = element.dataset[attribute];
 	if(typeof value !== "string") return null;

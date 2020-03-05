@@ -1,15 +1,14 @@
+import { closestElementByClassName, getDatasetNumber } from "dom";
+import { Secret } from "../../config";
+import { emitEvent, Event, onEvent } from "../../src/events";
 import { socket } from "./socket";
-import { Event, onEvent, emitEvent } from '../../src/events';
-import { generate } from './uuid';
-import { Secret } from '../../config';
-import { closestElementByClassName, getDatasetNumber } from 'dom';
-export { socket };
+import { generate } from "./uuid";
+
+const categories = Array.from(document.getElementsByClassName("firefly-category")) as HTMLElement[];
 
 socket.on("connect", () => {
 	emitEvent(socket, Event.Signon, Secret.MonitorSignon);
 });
-
-const categories = Array.from(document.getElementsByClassName("firefly-category")) as HTMLElement[];
 
 onEvent(socket, Event.State, ({category, voting}) => {
 	categories.forEach((element) => {
@@ -52,7 +51,4 @@ document.addEventListener("click", (ev) => {
 	emitEvent(socket, Event.Vote, { uuid: generate(), category, candidate });
 });
 
-
-
-
-
+export { socket };

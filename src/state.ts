@@ -1,4 +1,4 @@
-import { getState, setState, recordVote, getVotes, resetVotes } from './db';
+import { getState, getVotes, recordVote, resetVotes, setState } from "./db";
 
 /**
  * Default state variables.

@@ -1,11 +1,9 @@
-import {socket} from './socket';
-import {clientUUID} from "./uuid";
-import { emitEvent, Event, onEvent } from '../../src/events';
-import { closestElementByClassName, getDatasetNumber } from './dom';
-export { socket };
+import { emitEvent, Event, onEvent } from "../../src/events";
+import { closestElementByClassName, getDatasetNumber } from "./dom";
+import { socket } from "./socket";
+import { clientUUID } from "./uuid";
 
 const categories = Array.from(document.getElementsByClassName("firefly-category")) as HTMLElement[];
-
 
 onEvent(socket, Event.State, ({category, voting}) => {
 	categories.forEach((element) => {
@@ -47,3 +45,5 @@ document.addEventListener("click", (ev) => {
 
 	emitEvent(socket, Event.Vote, { uuid: clientUUID, category, candidate });
 });
+
+export { socket };

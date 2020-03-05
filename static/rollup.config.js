@@ -1,7 +1,7 @@
+import alias from "@rollup/plugin-alias";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
-import alias from "@rollup/plugin-alias";
 import { createFilter } from "@rollup/pluginutils";
 import surplusCompiler from "surplus/compiler";
 
@@ -20,12 +20,13 @@ function surplus({ include, exclude, sourceMap = false }) {
 		}
 	}
 };
+
 const plugins = () => [
-	typescript({ include: ['*.ts+(|x)', '**/*.ts+(|x)', '../src/events.ts'], exclude: ['*.d.ts', '**/*.d.ts'] }),
+	typescript({ include: ["*.ts+(|x)", "**/*.ts+(|x)", "../src/events.ts"], exclude: ["*.d.ts", "**/*.d.ts"] }),
 	surplus({ include: [ "*.tsx", "**/*.tsx", "*.jsx", "**/*.jsx" ], sourceMap: true }),
 	alias({
 		entries: [
-			{ find: 'socket.io-client', replacement: "node_modules/socket.io-client/dist/socket.io.dev.js" },
+			{ find: "socket.io-client", replacement: "node_modules/socket.io-client/dist/socket.io.dev.js" },
 		]
 	}),
 	resolve({
@@ -37,7 +38,7 @@ const plugins = () => [
 	commonjs({
 		include: /node_modules/,
 	}),
-]
+];
 
 export default [
 	{

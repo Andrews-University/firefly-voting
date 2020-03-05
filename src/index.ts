@@ -1,10 +1,10 @@
 import cors from "cors";
 import express from "express";
 import http from "http";
+import path from "path";
 import socketio, { Socket } from "socket.io";
-import { State, Stats } from "./state";
 import { Command, emitEvent, Event, EventType, onEvent, Secret } from "./events";
-import path from 'path';
+import { State, Stats } from "./state";
 
 const __dirname = path.resolve();
 
@@ -17,7 +17,7 @@ const staticOpts = {
 	extensions: [ "html" ],
 	index: [ "index.html" ],
 };
-router.get('/favicon.ico', (req, res) => res.redirect("img/favicon.png"));
+router.get("/favicon.ico", (req, res) => res.redirect("img/favicon.png"));
 router.use(`${BASE_PATH}/`, express.static(`${__dirname}/static/dist`, staticOpts));
 router.use(`${BASE_PATH}/css`, express.static(`${__dirname}/static/css`, staticOpts));
 router.use(`${BASE_PATH}/img`, express.static(`${__dirname}/static/img`, staticOpts));
