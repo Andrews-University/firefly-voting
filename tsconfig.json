@@ -6,6 +6,7 @@
     "sourceMap": true,
     "outDir": "dist",
     "allowSyntheticDefaultImports": true,
+    "incremental": true
   },
   "include": ["src/**/*"]
 }
