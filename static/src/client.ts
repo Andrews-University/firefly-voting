@@ -5,7 +5,7 @@ import { clientUUID } from "./uuid";
 
 const categories = Array.from(document.getElementsByClassName("firefly-category")) as HTMLElement[];
 
-onEvent(socket, Event.State, ({category, voting}) => {
+onEvent(socket, Event.State, ({ category, voting }) => {
 	categories.forEach((element) => {
 		if(+(element.dataset.id || NaN) === category && voting) {
 			element.classList.add("running");

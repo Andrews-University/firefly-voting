@@ -26,12 +26,12 @@ export const enum Command {
  * Map Events to their expected message type.
  */
 export type EventType = {
-	[Event.State]: { category: number, voting: boolean };
-	[Event.Stats]: { category: number, votes: (number | null | undefined)[] };
+	[Event.State]: { category: number; voting: boolean };
+	[Event.Stats]: { category: number; votes: (number | null | undefined)[] };
 	[Event.Info]: string;
 	[Event.Signon]: Secret.MonitorSignon | Secret.AdminSignon;
 	[Event.Admin]: Command;
-	[Event.Vote]: { uuid: string, category: number, candidate: number };
+	[Event.Vote]: { uuid: string; category: number; candidate: number };
 }
 
 /**

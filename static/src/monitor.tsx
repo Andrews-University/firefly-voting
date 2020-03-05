@@ -10,7 +10,7 @@ socket.on("connect", () => {
 	emitEvent(socket, Event.Signon, Secret.MonitorSignon);
 });
 
-onEvent(socket, Event.State, ({category}) => {
+onEvent(socket, Event.State, ({ category }) => {
 	categories.forEach((element) => {
 		if(+(element.dataset.id || NaN) === category) {
 			element.classList.add("running");
@@ -21,7 +21,7 @@ onEvent(socket, Event.State, ({category}) => {
 	});
 });
 
-onEvent(socket, Event.Stats, ({category, votes}) => {
+onEvent(socket, Event.Stats, ({ category, votes }) => {
 	const selected = categories.find((element) => +(element.dataset.id || NaN) === category);
 	if(!selected) { return; }
 

@@ -302,11 +302,11 @@ FROM votes
 WHERE category = ?
 `).raw(true);
 
-export function getVotes(category: number): { votes: { [key: string]: number | undefined }, tally: (number | null | undefined)[] } {
+export function getVotes(category: number): { votes: { [key: string]: number | undefined }; tally: (number | null | undefined)[] } {
 	const votes: { [key: string]: number | undefined } = {};
 	const tally: number[] = [];
 
-	for(const [uuid, candidate] of _getVotes.iterate(category)) {
+	for(const [ uuid, candidate ] of _getVotes.iterate(category)) {
 		votes[uuid] = candidate;
 
 		const sum = tally[candidate];

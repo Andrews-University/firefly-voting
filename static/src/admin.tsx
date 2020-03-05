@@ -23,14 +23,14 @@ document.getElementById("next")?.addEventListener("click", () => emitEvent(socke
 document.getElementById("prev")?.addEventListener("click", () => emitEvent(socket, Event.Admin, Command.PrevCategory));
 document.getElementById("reset")?.addEventListener("click", () => emitEvent(socket, Event.Admin, Command.ResetCategory));
 
-onEvent(socket, Event.State, ({category, voting}) => {
+onEvent(socket, Event.State, ({ category, voting }) => {
 	log(<b>State</b>, " = ", <b>category: </b>, category, " ", <b>voting: </b>, voting ? "true" : "false");
 });
 
 onEvent(socket, Event.Info, (message) => log(message));
 
-onEvent(socket, Event.Vote, ({uuid, category, candidate}) => {
-	log(<b>Vote</b>,` category ${category} for candidate #${candidate}   (`, <em>{uuid}</em>, `)`);
+onEvent(socket, Event.Vote, ({ uuid, category, candidate }) => {
+	log(<b>Vote</b>, ` category ${category} for candidate #${candidate}   (`, <em>{uuid}</em>, `)`);
 });
 
 export function log(...message: JSX.Child[]): void {

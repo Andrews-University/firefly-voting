@@ -62,10 +62,10 @@ function handleConnect(socket: Socket): void {
  * Handle a Vote event emitted by a client. There's no authentication, so
  * it's up to the client not to lie about its identity.
  */
-function handleVote({uuid, category, candidate}: EventType[Event.Vote]): void {
+function handleVote({ uuid, category, candidate }: EventType[Event.Vote]): void {
 	if(category !== State.category || !State.voting) return;
 	Stats.get(category).vote(uuid, candidate);
-	emitEvent(admins(), Event.Vote, {uuid, category, candidate});
+	emitEvent(admins(), Event.Vote, { uuid, category, candidate });
 
 	throttledUpdateMonitorTally();
 }
