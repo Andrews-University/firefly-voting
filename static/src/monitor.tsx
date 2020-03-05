@@ -10,7 +10,7 @@ socket.on("connect", () => {
 	emitEvent(socket, Event.Signon, Secret.MonitorSignon);
 });
 
-onEvent(socket, Event.State, ({category, voting}) => {
+onEvent(socket, Event.State, ({category}) => {
 	categories.forEach((element) => {
 		if(+(element.dataset.id || NaN) === category) {
 			element.classList.add("running");
@@ -27,14 +27,16 @@ onEvent(socket, Event.Stats, ({category, votes}) => {
 
 	const tiles = Array.from(selected.getElementsByClassName("firefly-tile")) as HTMLElement[];
 	tiles.forEach((tile, i) => {
-		let tally = i < votes.length ? votes[i] ?? 0 : 0;
+		const tally = i < votes.length ? votes[i] ?? 0 : 0;
 		tile.style.flexGrow = `${tally + 1}`;
-		const value = tile.getElementsByClassName("firefly-tile-counter-value")[0]! as HTMLElement;
+		const value = tile.getElementsByClassName("firefly-tile-counter-value")[0] as HTMLElement | null;
+		if(value === null) return;
 		value.innerText = `${tally}`;
 	});
 });
 
 document.addEventListener("click", (ev) => {
+	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 	const tileElement = closestElementByClassName(ev.target! as Node, "firefly-tile");
 	if(tileElement === null) return;
 	ev.preventDefault();

@@ -23,6 +23,7 @@ onEvent(socket, Event.State, ({category, voting}) => {
 });
 
 document.addEventListener("click", (ev) => {
+	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 	const tileElement = closestElementByClassName(ev.target! as Node, "firefly-tile");
 	if(tileElement === null) return;
 	ev.preventDefault();
