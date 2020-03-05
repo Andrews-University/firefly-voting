@@ -7,7 +7,7 @@ const categories = Array.from(document.getElementsByClassName("firefly-category"
 
 onEvent(socket, Event.State, ({ category, voting }) => {
 	categories.forEach((element) => {
-		if(+(element.dataset.id || NaN) === category && voting) {
+		if(getDatasetNumber(element, "id") === category && voting) {
 			element.classList.add("running");
 		}
 		else {
