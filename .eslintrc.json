@@ -1,0 +1,182 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "@typescript-eslint/explicit-function-return-type": [
+            "warn",
+            {
+
+            }
+        ],
+        "@typescript-eslint/no-explicit-any": [
+            "error",
+            {
+                "ignoreRestArgs": true
+            }
+        ],
+        "@typescript-eslint/no-use-before-define": [
+            "error",
+            {
+                "functions": false,
+                "classes": false
+            }
+        ],
+        "array-bracket-spacing": [
+            "warn",
+            "always",
+            {
+                "objectsInArrays": true,
+                "arraysInArrays": true
+            }
+        ],
+        "arrow-spacing": [
+            "error"
+        ],
+        "block-spacing": [
+            "error",
+            "always"
+        ],
+        "brace-style": [
+            "warn",
+            "stroustrup",
+            { "allowSingleLine": true }
+        ],
+        "comma-spacing": [
+            "error"
+        ],
+        "computed-property-spacing": [
+            "error"
+        ],
+        "func-call-spacing": [
+            "error"
+        ],
+        "generator-star-spacing": [
+            "error",
+            {
+                "before": true,
+                "after": false
+            }
+        ],
+        "indent": [
+            "error",
+            "tab",
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "key-spacing": [
+            "error",
+            {
+                "mode": "minimum"
+            }
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "no-case-declarations": [
+            "off"
+        ],
+        "no-confusing-arrow": [
+            "warn",
+            {
+                "allowParens": true
+            }
+        ],
+        "object-curly-spacing": [
+            "warn",
+            "always"
+        ],
+        "quotes": [
+            "error",
+            "double",
+            {
+                "allowTemplateLiterals": true,
+                "avoidEscape": true
+            }
+        ],
+        "rest-spread-spacing": [
+            "error"
+        ],
+        "template-curly-spacing": [
+            "warn",
+            "never"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "semi-spacing": [
+            "warn"
+        ],
+        "space-before-blocks": [
+            "warn",
+            "always"
+        ],
+        "space-before-function-paren": [
+            "warn",
+            {
+                "anonymous": "always",
+                "named": "never",
+                "asyncArrow": "always"
+            }
+        ],
+        "space-in-parens": [
+            "warn",
+            "never"
+        ],
+        "space-infix-ops": [
+            "error"
+        ],
+        "space-unary-ops": [
+            "error",
+            {
+                "words": true,
+                "nonwords": false
+            }
+        ],
+        "spaced-comment": [
+            "warn",
+            "always",
+            {
+                "block": {
+                    "balanced": true
+                }
+            }
+        ],
+        "switch-colon-spacing": [
+            "warn",
+            {
+                "after": true,
+                "before": false
+            }
+        ],
+        "template-tag-spacing": [
+            "error",
+            "never"
+        ],
+        "yield-star-spacing": [
+            "error",
+            "before"
+        ]
+    }
+}
