@@ -2,6 +2,7 @@ import { socket } from "./socket";
 import { Event, onEvent, emitEvent } from '../../src/events';
 import { generate } from './uuid';
 import { Secret } from '../../config';
+import { closestElementByClassName, getDatasetNumber } from 'dom';
 export { socket };
 
 socket.on("connect", () => {
@@ -34,43 +35,21 @@ onEvent(socket, Event.Stats, ({category, votes}) => {
 	});
 });
 
-
-
 document.addEventListener("click", (ev) => {
-	let target = ev.target! as Node;
-	while(!(target instanceof HTMLElement) || !target.classList.contains("firefly-tile")) {
-		if(!target.parentNode) {
-			console.warn("could not find parent", ev.target);
-			return;
-		}
-
-		target = target.parentNode;
-	}
+	const tileElement = closestElementByClassName(ev.target! as Node, "firefly-tile");
+	if(tileElement === null) return;
 	ev.preventDefault();
 
-	const candidate_id = target.dataset.id;
-	if(typeof candidate_id !== "string") {
-		console.warn("could not find candidate_id", target);
-		return;
-	}
+	const categoryElement = closestElementByClassName(tileElement, "firefly-category");
+	if(categoryElement === null) return console.warn("found firefly-tile outside of firefly-category", tileElement);
 
-	let categoryTarget = target as Node;
-	while(!(categoryTarget instanceof HTMLElement) || !categoryTarget.classList.contains("firefly-category")) {
-		if(!categoryTarget.parentNode) {
-			console.warn("could not find category parent", target);
-			return;
-		}
+	const candidate = getDatasetNumber(tileElement, "id");
+	if(candidate === null) return console.warn("missing data-id attribute on", tileElement);
 
-		categoryTarget = categoryTarget.parentNode;
-	}
+	const category = getDatasetNumber(categoryElement, "id");
+	if(category === null) return console.warn("missing data-id attribute on", categoryElement);
 
-	const category_id = categoryTarget.dataset.id;
-	if(typeof category_id !== "string") {
-		console.warn("could not find category_id", target);
-		return;
-	}
-
-	emitEvent(socket, Event.Vote, { uuid: generate(), category: +category_id, candidate: +candidate_id });
+	emitEvent(socket, Event.Vote, { uuid: generate(), category, candidate });
 });
 
 
