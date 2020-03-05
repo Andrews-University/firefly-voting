@@ -163,7 +163,7 @@ function info(message: string): void {
 /**
  * Throttle calls to `fn` to at most one per every `onePerMS` milliseconds.
  */
-function throttle(onePerMS: number, fn: () => any): () => void {
+function throttle(onePerMS: number, fn: () => unknown): () => void {
 	let timer: object | undefined = void 0;
 	let pending = false;
 

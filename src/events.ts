@@ -8,7 +8,7 @@ export { Event, Secret } from "../config";
 interface Socket {
 	on(event: string, fn: Function): void;
 	off(event: string, fn: Function): void;
-	emit(event: string, ...args: any[]): void;
+	emit(event: string, ...args: unknown[]): void;
 }
 
 /**
@@ -100,13 +100,13 @@ export const ValidateEventMessage: { [E in Event]: (message: unknown) => message
  * A map of user-functions to type-safe, wrapped user-functions that have been
  * attached as listeners to some event.
  */
-const typedEventMap = new Map<(message: any) => any, (message: unknown) => any>();
+const typedEventMap = new Map<(message: never) => unknown, (message: unknown) => unknown>();
 
 /**
  * Add an event listener to the given socket. Malformed messages are discarded
  * entirely, no excess property check is performed on correctly shaped messages.
  */
-export function onEvent<E extends Event>(socket: Socket, event: E, fn: (message: EventType[E]) => any): void {
+export function onEvent<E extends Event>(socket: Socket, event: E, fn: (message: EventType[E]) => unknown): void {
 	const checker = (message: unknown): unknown => {
 		if(ValidateEventMessage[event](message)) return fn(message as EventType[E]);
 		console.warn("Discarding malformed message", event, message);
