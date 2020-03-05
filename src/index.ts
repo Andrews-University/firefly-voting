@@ -15,8 +15,8 @@ const router = express();
 
 router.use(cors());
 const staticOpts = {
-	extensions: [ "xhtml", "html" ],
-	index: [ "index.xhtml", "index.html" ],
+	extensions: [ "html" ],
+	index: [ "index.html" ],
 };
 router.get('/favicon.ico', (req, res) => res.redirect("img/favicon.png"));
 router.use(`${BASE_PATH}/`, express.static(`${__dirname}/static/dist`, staticOpts));

@@ -6,12 +6,12 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-		"dev": "yon run build; concurrently \"yon run dev-js -w\" \"yon run dev-xhtml\"",
-		"dev-js": "rollup -w -c rollup.config.js",
-		"dev-xhtml": "pug -w -O '{ pretty: \"\\t\", filters: { xhtml: () => `<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html>` } }' -E xhtml index.pug monitor.pug -o dist",
+    "dev": "concurrently -k \"yon run dev-js -w\" \"yon run dev-html\"",
+    "dev-js": "rollup -w -c rollup.config.js",
+    "dev-html": "pug -w -O '{ pretty: \"\\t\" }' index.pug monitor.pug -o dist",
     "build": "yon run build-js; yon run build-xhtml; ln -s ../admin.html dist/admin.html -f",
     "build-js": "rollup -c rollup.config.js",
-    "build-xhtml": "pug -O '{ pretty: \"\\t\", filters: { xhtml: () => `<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html>` } }' -E xhtml index.pug monitor.pug -o dist"
+    "build-xhtml": "pug -O '{ pretty: \"\\t\" }' index.pug monitor.pug -o dist"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^3.0.1",
