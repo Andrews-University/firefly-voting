@@ -1,10 +1,10 @@
 {
-  "name": "firefly-server",
-  "version": "1.0.0",
-  "description": "Server for the firefly polling application",
+  "name": "firefly-voting",
+  "version": "2.0.0",
+  "description": "Live audience polling web-application with a separate live display of candidate rank for projection.",
   "main": "index.js",
   "author": "webstrand",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true,
   "type": "module",
   "engines": {

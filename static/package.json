@@ -1,9 +1,4 @@
 {
-  "name": "firefly-client",
-  "version": "1.0.0",
-  "description": "Client to the firefly polling application",
-  "author": "webstrand",
-  "license": "UNLICENSED",
   "private": true,
   "scripts": {
     "dev": "concurrently -k \"yon run dev-js -w\" \"yon run dev-html\"",
