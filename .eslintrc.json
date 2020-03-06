@@ -4,9 +4,7 @@
         "es6": true
     },
     "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended"
+        "eslint:recommended"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -21,25 +19,6 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "@typescript-eslint/explicit-function-return-type": [
-            "warn",
-            {
-
-            }
-        ],
-        "@typescript-eslint/no-explicit-any": [
-            "error",
-            {
-                "ignoreRestArgs": true
-            }
-        ],
-        "@typescript-eslint/no-use-before-define": [
-            "error",
-            {
-                "functions": false,
-                "classes": false
-            }
-        ],
         "array-bracket-spacing": [
             "warn",
             "always",
@@ -178,5 +157,35 @@
             "error",
             "before"
         ]
-    }
+    },
+    "overrides": [
+        {
+            "files": [ "**/*.ts", "**/*.tsx" ],
+            "extends": [
+                "plugin:@typescript-eslint/eslint-recommended",
+                "plugin:@typescript-eslint/recommended"
+            ],
+            "rules": {
+                "@typescript-eslint/explicit-function-return-type": [
+                    "warn",
+                    {
+
+                    }
+                ],
+                "@typescript-eslint/no-explicit-any": [
+                    "error",
+                    {
+                        "ignoreRestArgs": true
+                    }
+                ],
+                "@typescript-eslint/no-use-before-define": [
+                    "error",
+                    {
+                        "functions": false,
+                        "classes": false
+                    }
+                ]
+            }
+        }
+    ]
 }

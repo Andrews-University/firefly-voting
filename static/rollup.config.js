@@ -18,11 +18,11 @@ function surplus({ include, exclude, sourceMap = false }) {
 				map: sourceMap ? result.map : null
 			};
 		}
-	}
-};
+	};
+}
 
 const plugins = () => [
-	typescript({ include: ["*.ts+(|x)", "**/*.ts+(|x)", "../src/events.ts"], exclude: ["*.d.ts", "**/*.d.ts"] }),
+	typescript({ include: [ "*.ts+(|x)", "**/*.ts+(|x)", "../src/events.ts" ], exclude: [ "*.d.ts", "**/*.d.ts" ] }),
 	surplus({ include: [ "*.tsx", "**/*.tsx", "*.jsx", "**/*.jsx" ], sourceMap: true }),
 	alias({
 		entries: [
@@ -30,7 +30,6 @@ const plugins = () => [
 		]
 	}),
 	resolve({
-		main: false,
 		browser: true,
 		preferBuiltins: false,
 
