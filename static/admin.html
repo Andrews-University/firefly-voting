@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+	  html, body { height: 100% }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; display: flex; flex-direction: column; }
+      .firefly-bar { background: #000; padding: 3px; width: 100%; flex-shrink: 0; }
+      .firefly-bar input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      .firefly-bar button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; flex: 1 0 auto; }
+	  #messages > li { padding: 5px 10px; }
+	  #messages > li > time:first-child { padding-right: 2em; font-size: 0.7em }
+      #messages > li:nth-child(odd) { background: #bbb; }
+    </style>
+    <script defer src="admin.js"></script>
+  </head>
+  <body>
+	<ul id="messages"></ul>
+    <div class="firefly-bar">
+		<button type="button" id="open">Open voting</button>
+		<button type="button" id="close">Close voting</button>
+		<button type="button" id="next">Close voting, next category</button>
+		<button type="button" id="prev">Close voting, previous category</button>
+		<button type="button" id="reset">Reset the vote count for the current category</button>
+	</div>
+  </body>
+</html>

@@ -2,3 +2,4 @@
 /.vscode
 /dist
 /yarn-error.log
+/firefly.sqlite3

@@ -1,83 +1,143 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-    <link rel="shortcut icon" type="image/png" href="favicon.png">
-    
-	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" type="text/css" href="./css/animate.css">
-	<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
-	
-    <title>Vote for the Golden Cardinal</title>
-<style>
-.flex {
-		display: flex;
-	}
-</style>
 
-    
-<!-- Analytics -->
- 
-<!-- Analytics END -->
-    
+<?xml version="1.0" encoding="utf-8"?>
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+
+	<title>Vote for the Golden Cardinal</title>
+
+	<link rel="shortcut icon" type="image/png" href="favicon.png">
+	<script type="application/javascript" src="index.js" defer></script>
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./css/animate.css">
+	<style type="text/css">
+		.firefly-container {
+			padding: 40px 0 40px 0;
+		}
+
+		.firefly-title {
+			text-align: center;
+			color: #888;
+			font-family: Helvetica;
+			margin: 10px 0 20px 0;
+		}
+
+		.firefly-category {
+			display: none;
+		}
+
+		.firefly-category.running {
+			display: block;
+		}
+
+		.firefly-category-title {
+			text-align: center;
+			color: #888;
+			font-family: Helvetica;
+		}
+
+		.firefly-tile-overlay-title {
+			text-align: center;
+			color: #888;
+			font-family: Helvetica;
+		}
+
+		.firefly-tile-overlay-body {
+			text-align: center;
+			color: #888;
+			font-family: Helvetica;
+		}
+
+		.firefly-layout {
+			margin-top: 30px;
+
+			display: grid;
+			grid-template-columns: auto auto;
+
+			row-gap: 1em;
+			column-gap: 1em;
+		}
+
+		.firefly-tile.vote {
+			grid-column: 1/3;
+		}
+
+		.firefly-tile-overlay {
+			display: none;
+		}
+
+		.firefly-tile.vote > .firefly-tile-overlay {
+			display: block;
+		}
+
+		.firefly-category.running ~ .firefly-placeholder {
+			display: none;
+		}
+
+		.firefly-placeholder-title {
+			text-align: center;
+			color: #888;
+			font-family: Helvetica;
+		}
+
+		.firefly-placeholder-body {
+			text-align: center;
+			color: #888;
+			font-family: Helvetica;
+		}
+	</style>
 </head>
 <body>
-<!-- Main container -->
-<div class="page-container">
-    
-<!-- bloc-0 -->
-<div class="bloc l-bloc " id="bloc-0">
-	<div class="container bloc-lg">
-		<div class="row">
-			<div class="col">
-				<h1 class="mg-md text-center">
-					Golden Cardinal Awards!<br>
-				</h1>
-				<h2 class="text-center">
-					Best Regalia
-				</h2>
+<div class="container firefly-container">
+	<h1 class="firefly-title">Golden Cardinal Awards!</h1>
+	<section class="firefly-category" data-id="0">
+		<h2 class="firefly-category-title">Best Category-1/h2>
+		<div class="firefly-layout">
+			<div class="firefly-tile">
+				<a class="firefly-tile-liner" href="#" data-id="0"><img src="img/redleaves.jpg" class="img-fluid animated fadeInLeft"/></a>
+				<div class="firefly-tile-overlay"><h3 class="firefly-tile-overlay-title">Thank You for Voting!</h3><p class="firefly-tile-overlay-body">Please wait while we count your votes.<br/>You may change your vote at any time by selecting a different candidate.</p></div>
+			</div>
+			<div class="firefly-tile">
+				<a class="firefly-tile-liner" href="#" data-id="1"><img src="img/lanterns.jpg" class="img-fluid animated fadeInDown"/></a>
+				<div class="firefly-tile-overlay"><h3 class="firefly-tile-overlay-title">Thank You for Voting!</h3><p class="firefly-tile-overlay-body">Please wait while we count your votes.<br/>You may change your vote at any time by selecting a different candidate.</p></div>
+			</div>
+			<div class="firefly-tile">
+				<a class="firefly-tile-liner" href="#" data-id="2"><img src="img/mountains.jpg" class="img-fluid animated fadeInUp"/></a>
+				<div class="firefly-tile-overlay"><h3 class="firefly-tile-overlay-title">Thank You for Voting!</h3><p class="firefly-tile-overlay-body">Please wait while we count your votes.<br/>You may change your vote at any time by selecting a different candidate.</p></div>
+			</div>
+			<div class="firefly-tile">
+				<a class="firefly-tile-liner" href="#" data-id="3"><img src="img/forrest.jpg" class="img-fluid animated fadeInRight"/></a>
+				<div class="firefly-tile-overlay"><h3 class="firefly-tile-overlay-title">Thank You for Voting!</h3><p class="firefly-tile-overlay-body">Please wait while we count your votes.<br/>You may change your vote at any time by selecting a different candidate.</p></div>
 			</div>
 		</div>
-		<div class="row voffset">
-			<div class="col">
-				<a href="#" data-lightbox="img/red-leaves.jpg" data-gallery-id="gallery-1"><img src="img/red-leaves.jpg" class="img-fluid mx-auto d-block img-style animated fadeInLeft" data-appear-anim-style="fadeInLeft" alt="red leaves" /></a>
+	</section>
+	<section class="firefly-category" data-id="1">
+		<h2 class="firefly-category-title">Best Category-2</h2>
+		<div class="firefly-layout">
+			<div class="firefly-tile">
+				<a class="firefly-tile-liner" href="#" data-id="0"><img src="img/redleaves.jpg" class="img-fluid animated fadeInLeft"/></a>
+				<div class="firefly-tile-overlay"><h3 class="firefly-tile-overlay-title">Thank You for Voting!</h3><p class="firefly-tile-overlay-body">Please wait while we count your votes.<br/>You may change your vote at any time by selecting a different candidate.</p></div>
 			</div>
-			<div class="col">
-				<a href="#" data-lightbox="img/lanterns.jpg" data-gallery-id="gallery-1"><img src="img/lanterns.jpg" class="img-fluid mx-auto d-block animated fadeInRight" data-appear-anim-style="fadeInRight" alt="lanterns" /></a>
+			<div class="firefly-tile">
+				<a class="firefly-tile-liner" href="#" data-id="1"><img src="img/lanterns.jpg" class="img-fluid animated fadeInDown"/></a>
+				<div class="firefly-tile-overlay"><h3 class="firefly-tile-overlay-title">Thank You for Voting!</h3><p class="firefly-tile-overlay-body">Please wait while we count your votes.<br/>You may change your vote at any time by selecting a different candidate.</p></div>
+			</div>
+			<div class="firefly-tile">
+				<a class="firefly-tile-liner" href="#" data-id="2"><img src="img/mountains.jpg" class="img-fluid animated fadeInUp"/></a>
+				<div class="firefly-tile-overlay"><h3 class="firefly-tile-overlay-title">Thank You for Voting!</h3><p class="firefly-tile-overlay-body">Please wait while we count your votes.<br/>You may change your vote at any time by selecting a different candidate.</p></div>
+			</div>
+			<div class="firefly-tile">
+				<a class="firefly-tile-liner" href="#" data-id="3"><img src="img/forrest.jpg" class="img-fluid animated fadeInRight"/></a>
+				<div class="firefly-tile-overlay"><h3 class="firefly-tile-overlay-title">Thank You for Voting!</h3><p class="firefly-tile-overlay-body">Please wait while we count your votes.<br/>You may change your vote at any time by selecting a different candidate.</p></div>
 			</div>
 		</div>
-		<div class="row voffset">
-			<div class="col">
-				<a href="#" data-lightbox="img/mountains.jpg" data-gallery-id="gallery-1"><img src="img/mountains.jpg" class="img-fluid mx-auto d-block animated fadeInUp" data-appear-anim-style="fadeInUp" alt="mountains" /></a>
-			</div>
-			<div class="col">
-				<a href="#" data-lightbox="img/forrest.jpg" data-gallery-id="gallery-1"><img src="img/forrest.jpg" class="img-fluid mx-auto d-block animated fadeInDown" data-appear-anim-style="fadeInDown" alt="forrest" /></a>
-			</div>
-		</div>
-	</div>
+	</section>
+	<section class="firefly-placeholder">
+		<h4 class="firefly-placeholder-title">Unavailable</h4>
+		<p class="firefly-placeholder-body">Please pay attention to the presentation, you will be able to vote for your candidate of choice soon.</p>
+	</section>
 </div>
-<!-- bloc-0 END -->
-
-
-</div>
-<!-- Main container END -->
-    
-
-<script src="./js/jquery-3.3.1.js"></script>
-<script src="./js/bootstrap.bundle.js"></script>
-<script src="./js/blocs.js"></script>
-<script src="./js/jquery.touchSwipe.min.js" defer></script>
-<!-- Additional JS END -->
-
-
-
-<!-- Preloader -->
-<div id="page-loading-blocs-notifaction" class="page-preloader"></div>
-<!-- Preloader END -->
-
 </body>
 </html>

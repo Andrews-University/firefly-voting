@@ -2,7 +2,7 @@
 	    GoldenCardinal
         Built with Blocs
 -----------------------------------------------------------------------------------*/
- 
+
 body{
 	margin:0;
 	padding:0;
@@ -18,7 +18,7 @@ a:hover{text-decoration: none; cursor:pointer;}
 
 /* Preloader */
 
-.page-preloader{position: fixed;top: 0;bottom: 0;width: 100%;z-index:100000;background:#FFFFFF url("img/pageload-spinner.gif") no-repeat center center;}
+.page-preloader{position: fixed;top: 0;bottom: 0;width: 100%;z-index:100000;background:#FFFFFF url("img/spinner.gif") no-repeat center center;}
 
 /* = Blocs
 -------------------------------------------------------------- */
@@ -278,17 +278,17 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 
 
 
-/* = Mobile adjustments 
+/* = Mobile adjustments
 -------------------------------------------------------------- */
 @media (max-width: 1024px)
 {
     .bloc{
-        padding-left: 20px; 
-        padding-right: 20px;  
+        padding-left: 20px;
+        padding-right: 20px;
     }
     .bloc.full-width-bloc, .bloc-tile-2.full-width-bloc .container, .bloc-tile-3.full-width-bloc .container, .bloc-tile-4.full-width-bloc .container{
-        padding-left: 0; 
-        padding-right: 0;  
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 @media (max-width: 991px)
@@ -311,7 +311,7 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
         padding:0 10px;
     }
     .btn-dwn{
-       display:none; 
+       display:none;
     }
     .voffset{
         margin-top:30px;
@@ -345,12 +345,12 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 	}
 	.mt-md-4{
 	}
-	
+
 }
 
 @media (max-width: 575px){
 	.mt-1{
 	}
-	
+
 }
 

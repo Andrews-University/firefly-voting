@@ -21,30 +21,54 @@ function surplus({ include, exclude, sourceMap = false }) {
 	}
 };
 
-export default {
-	input: "src/index.ts",
-	output: {
-		format: "iife",
-		file: "index.js",
-		name: "client",
-		sourcemap: true,
-	},
-	plugins: [
-		typescript({ include: [ "*.ts(|x)", "**/*.ts(|x)" ] }),
-		surplus({ include: [ "*.tsx", "**/*.tsx" ], sourceMap: true }),
-		alias({
-			entries: [
-				{ find: 'socket.io-client', replacement: "node_modules/socket.io-client/dist/socket.io.dev.js" },
-			]
-		}),
-		resolve({
-			main: false,
-			browser: true,
-			preferBuiltins: false,
+const plugins = () => [
+	typescript(),
+	surplus({ include: [ "*.tsx", "**/*.tsx", "*.jsx", "**/*.jsx" ], sourceMap: true }),
+	alias({
+		entries: [
+			{ find: 'socket.io-client', replacement: "node_modules/socket.io-client/dist/socket.io.dev.js" },
+		]
+	}),
+	resolve({
+		main: false,
+		browser: true,
+		preferBuiltins: false,
 
-		}),
-		commonjs({
-			include: /node_modules/,
-		}),
-	]
-};
+	}),
+	commonjs({
+		include: /node_modules/,
+	}),
+]
+
+export default [
+	{
+		input: "src/index.ts",
+		output: {
+			format: "iife",
+			file: "index.js",
+			name: "client",
+			sourcemap: true,
+		},
+		plugins: plugins()
+	},
+	{
+		input: "src/chat.ts",
+		output: {
+			format: "iife",
+			file: "chat.js",
+			name: "chat",
+			sourcemap: true,
+		},
+		plugins: plugins()
+	},
+	{
+		input: "src/admin.tsx",
+		output: {
+			format: "iife",
+			file: "admin.js",
+			name: "admin",
+			sourcemap: true,
+		},
+		plugins: plugins()
+	}
+];
