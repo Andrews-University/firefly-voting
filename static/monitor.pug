@@ -9,12 +9,16 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="en")
 		link(rel="stylesheet" type="text/css" href="./css/bootstrap.css")
 		link(rel="stylesheet" type="text/css" href="./css/animate.css")
 		style(type="text/css").
+            body {
+                background-color: #000;
+            }
+
 			.firefly-container {
 				padding: 40px 0 40px 0;
 			}
 			.firefly-title {
 				text-align: center;
-				color: #888;
+				color: #c99843;
 				font-family: Helvetica;
 				margin: 10px 0 20px 0;
 			}
@@ -26,7 +30,7 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="en")
 			}
 			.firefly-category-title {
 				text-align: center;
-				color: #888;
+				color: #c99843;
 				font-family: Helvetica;
 			}
 			.firefly-layout {
@@ -49,8 +53,8 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="en")
 			}
 			.firefly-tile-counter {
 				white-space: nowrap;
-				background-color: #fff;
-				color: #888;
+				background-color: #000;
+				color: #c99843;
 				font-family: Helvetica;
 			}
 
@@ -72,8 +76,8 @@ html(xmlns="http://www.w3.org/1999/xhtml" lang="en")
 					+firefly-tile(3, d)
 	body
 		.firefly-container
-			h1.firefly-title Golden Cardinal Awards!
-			+firefly-category(0, "Best Regalia",                     "img/regailia/sonia-small.svg", "img/regailia/vern_byrd-small.svg", "img/regailia/faculty-small.svg", "img/regailia/ryan_hayes-small.svg")
+			h1.firefly-title(onclick="document.body.requestFullscreen()") Golden Cardinal Awards!
+			+firefly-category(0, "Best Regalia",                     "img/regailia/sonia-small.svg", "img/regailia/vern_byrd-small.svg", "img/regailia/beverly-small.svg", "img/regailia/ryan_hayes-small.svg")
 			+firefly-category(1, "Best Office Fit Break",            "img/break/arboretum.svg", "img/break/crayon-box.svg", "img/break/gia-ceis.svg", "img/break/transportation.svg")
 			+firefly-category(2, "Best Employee on a Skateboard",    "img/skateboard/melissa-bolle.svg", "img/skateboard/don.svg", "img/skateboard/melissa-poua.svg", "img/skateboard/jason.svg")
 			+firefly-category(3, "Best Southern Accent",             "img/accent/fares.svg", "img/accent/alisa.svg", "img/accent/luxton.svg", "img/accent/stefanie.svg")
