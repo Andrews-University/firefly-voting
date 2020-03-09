@@ -13,7 +13,8 @@
   "scripts": {
     "start": "node --es-module-specifier-resolution=node dist/src/index.js",
     "dev": "tsc && concurrently -k \"tsc -w\" \"nodemon --es-module-specifier-resolution=node dist/src/index.js\"",
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "nodemonConfig": {
     "ignore": [
