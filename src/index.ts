@@ -8,19 +8,25 @@ import { State, Stats } from "./state";
 
 const __dirname = path.resolve();
 
-const { PORT = 8080, BASE_PATH = "" } = process.env;
+const { PORT = 8080, BASE_PATH = "", SERVE_CLIENTS = "0" } = process.env;
 
 const router = express();
 
 router.use(cors());
-const staticOpts = {
-	extensions: [ "html" ],
-	index: [ "index.html" ],
-};
-router.get("/favicon.ico", (req, res) => res.redirect("img/favicon.png"));
-router.use(`${BASE_PATH}/`, express.static(`${__dirname}/static/dist`, staticOpts));
-router.use(`${BASE_PATH}/css`, express.static(`${__dirname}/static/css`, staticOpts));
-router.use(`${BASE_PATH}/img`, express.static(`${__dirname}/static/img`, staticOpts));
+
+// We don't want to accidentally serve the clients from the API server when the
+// clients are hosted elsewhere. Otherwise an attacker could simply visit the
+// API server to gain access to an otherwise secured /admin.
+if(SERVE_CLIENTS) {
+	console.warn(`Serving client applications, be sure to secure access to ${BASE_PATH}/admin.html and ${BASE_PATH}/monitor.html`);
+	const staticOpts = {
+		index: [ "index.html" ],
+	};
+	router.get("/favicon.ico", (req, res) => res.redirect("img/favicon.png"));
+	router.use(`${BASE_PATH}/`, express.static(`${__dirname}/static/dist`, staticOpts));
+	router.use(`${BASE_PATH}/css`, express.static(`${__dirname}/static/css`, staticOpts));
+	router.use(`${BASE_PATH}/img`, express.static(`${__dirname}/static/img`, staticOpts));
+}
 
 const server = http.createServer(router);
 
