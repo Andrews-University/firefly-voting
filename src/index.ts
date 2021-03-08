@@ -2,7 +2,8 @@ import cors from "cors";
 import express from "express";
 import http from "http";
 import path from "path";
-import socketio, { Socket } from "socket.io";
+import * as socketio from "socket.io";
+import { Socket } from "socket.io";
 import { Command, emitEvent, Event, EventType, onEvent, Secret } from "./events";
 import { State, Stats } from "./state";
 
@@ -30,7 +31,7 @@ if(SERVE_CLIENTS) {
 
 const server = http.createServer(router);
 
-const io = socketio(server, { path: `${BASE_PATH}/socket.io`, serveClient: false });
+const io = new (socketio as any).Server(server, { path: `${BASE_PATH}/socket.io`, serveClient: false });
 io.sockets.on("connect", handleConnect);
 
 /**
@@ -170,13 +171,13 @@ function info(message: string): void {
  * Throttle calls to `fn` to at most one per every `onePerMS` milliseconds.
  */
 function throttle(onePerMS: number, fn: () => unknown): () => void {
-	let timer: object | undefined = void 0;
+	let timer: NodeJS.Timeout | undefined;
 	let pending = false;
 
 	return thunk;
 
 	function thunk(): void {
-		if(timer !== void 0) {
+		if(timer) {
 			pending = true;
 		}
 		else {
@@ -194,7 +195,7 @@ function throttle(onePerMS: number, fn: () => unknown): () => void {
 			fn();
 		}
 		else {
-			timer = void 0;
+			timer = undefined;
 		}
 	}
 }

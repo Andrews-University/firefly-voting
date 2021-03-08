@@ -26,7 +26,7 @@ const plugins = () => [
 	surplus({ include: [ "*.tsx", "**/*.tsx", "*.jsx", "**/*.jsx" ], sourceMap: true }),
 	alias({
 		entries: [
-			{ find: "socket.io-client", replacement: "node_modules/socket.io-client/dist/socket.io.dev.js" },
+			{ find: "socket.io-client", replacement: "node_modules/socket.io-client/dist/socket.io.js" },
 		]
 	}),
 	resolve({
